@@ -5,3 +5,86 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Server.destroy_all
+Channel.destroy_all
+DirectMessage.destroy_all
+Message.destroy_all
+Membership.destroy_all
+
+rich = User.create(email: 'rich@rich.com', username: 'rich', password: 'richrich')
+
+void = User.create!(email: 'dark@dark.com', username: 'Void', password: "blackhole")
+flame = User.create!(email: 'red@red.com', username: 'Flame', password: "volcano")
+tidal = User.create!(email: 'blue@blue.com', username: 'Tidal', password: "tsunami")
+shock = User.create!(email: 'yellow@yellow.com', username: 'Shock', password: "lightning")
+flow = User.create!(email: 'green@green.com', username: 'Flow', password: "tornado")
+
+dark = Server.create!(name: 'dark', description: 'into the void', owner_id: void.id)
+red = Server.create!(name: 'red', description: 'fire', owner_id: flame.id)
+blue = Server.create!(name: 'blue', description: 'water', owner_id: tidal.id)
+yellow = Server.create!(name: 'yellow', description: 'lightning', owner_id: shock.id)
+green = Server.create!(name: 'green', description: 'wind', owner_id: flow.id)
+
+ch1 = Channel.create!(name: 'animal', description: 'dragon', server_id: dark.id)
+ch2 = Channel.create!(name: 'animal', description: 'komodo', server_id: red.id)
+ch3 = Channel.create!(name: 'animal', description: 'shark', server_id: blue.id)
+ch4 = Channel.create!(name: 'animal', description: 'tiger', server_id: yellow.id)
+ch5 = Channel.create!(name: 'animal', description: 'eagle', server_id: green.id)
+
+dm1 = DirectMessage.create!
+dm2 = DirectMessage.create!
+dm3 = DirectMessage.create!
+dm4 = DirectMessage.create!
+dm5 = DirectMessage.create!
+team_dm = DirectMessage.create!(is_group: true)
+
+Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: void.id)
+Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: flame.id)
+Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: tidal.id)
+Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: shock.id)
+Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: flow.id)
+
+Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: dark.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: red.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: blue.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: yellow.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: green.id)
+
+Membership.create!(member_id: void.id, membershipable_type: "Server", membershipable_id: dark.id)
+Membership.create!(member_id: flame.id, membershipable_type: "Server", membershipable_id: red.id)
+Membership.create!(member_id: tidal.id, membershipable_type: "Server", membershipable_id: blue.id)
+Membership.create!(member_id: shock.id, membershipable_type: "Server", membershipable_id: yellow.id)
+Membership.create!(member_id: flow.id, membershipable_type: "Server", membershipable_id: green.id)
+
+Membership.create!(member_id: rich.id, membershipable_type: "Channel", membershipable_id: ch1.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Channel", membershipable_id: ch2.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Channel", membershipable_id: ch3.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Channel", membershipable_id: ch4.id)
+Membership.create!(member_id: rich.id, membershipable_type: "Channel", membershipable_id: ch5.id)
+
+Membership.create!(member_id: void.id, membershipable_type: "Channel", membershipable_id: ch1.id)
+Membership.create!(member_id: flame.id, membershipable_type: "Channel", membershipable_id: ch2.id)
+Membership.create!(member_id: tidal.id, membershipable_type: "Channel", membershipable_id: ch3.id)
+Membership.create!(member_id: shock.id, membershipable_type: "Channel", membershipable_id: ch4.id)
+Membership.create!(member_id: flow.id, membershipable_type: "Channel", membershipable_id: ch5.id)
+
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: dm1.id)
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: dm2.id)
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: dm3.id)
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: dm4.id)
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: dm5.id)
+
+Membership.create!(member_id: void.id, membershipable_type: "DirectMessage", membershipable_id: dm1.id)
+Membership.create!(member_id: flame.id, membershipable_type: "DirectMessage", membershipable_id: dm2.id)
+Membership.create!(member_id: tidal.id, membershipable_type: "DirectMessage", membershipable_id: dm3.id)
+Membership.create!(member_id: shock.id, membershipable_type: "DirectMessage", membershipable_id: dm4.id)
+Membership.create!(member_id: flow.id, membershipable_type: "DirectMessage", membershipable_id: dm5.id)
+
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+Membership.create!(member_id: void.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+Membership.create!(member_id: flame.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+Membership.create!(member_id: tidal.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+Membership.create!(member_id: shock.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+Membership.create!(member_id: flow.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)

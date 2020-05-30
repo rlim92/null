@@ -1,0 +1,14 @@
+.session-form-div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

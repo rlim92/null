@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+bundle.js
+bundle.js.map
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -19,8 +21,10 @@
 
 /node_modules
 /yarn-error.log
+npm-debug.log
 
 /public/assets
+.DS_Store
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.

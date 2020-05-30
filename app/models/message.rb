@@ -2,7 +2,7 @@ class Message < ApplicationRecord
     validates :text, :messageable_id, :messageable_type, :author_id, presence: true
     validates :is_pinned, inclusion: { in: [true, false] }
 
-    before_save: :default_unpinned
+    before_save :default_unpinned
 
     belongs_to :author,
         class_name: :User,

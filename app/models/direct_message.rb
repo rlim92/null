@@ -1,5 +1,7 @@
 class DirectMessage < ApplicationRecord
-    validates :is_team, inclusion: { in: [true, false] }
+    validates :is_group, inclusion: { in: [true, false] }
+
+    after_initialize :default_duo
 
     has_many :memberships,
         as: :membershipable
@@ -10,5 +12,10 @@ class DirectMessage < ApplicationRecord
     
     has_many :messages,
         as: :messageable
+
+    
+    def default_duo
+        self.is_group ||= false
+    end
 
 end

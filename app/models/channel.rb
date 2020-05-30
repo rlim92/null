@@ -1,8 +1,8 @@
 class Channel < ApplicationRecord
     validates :name, presence: true
-    validates :is_private, inclusion: { in: [true, false] }
+    validates :is_private, :is_voice, inclusion: { in: [true, false] }
 
-    before_save :default_public
+    after_initialize :default_public, :default_text
 
     belongs_to :server,
         class_name: :Server,
@@ -20,6 +20,9 @@ class Channel < ApplicationRecord
 
     def default_public
         self.is_private ||= false
+    end
+    def default_text
+        self.is_voice ||= false
     end
 
 end
