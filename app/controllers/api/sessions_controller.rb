@@ -2,13 +2,12 @@ class Api::SessionsController < ApplicationController
   before_action :ensure_logged_in, only: :destroy
 
   def create
-    @user = User.includes(
-      :servers, 
-      :channels, 
-      :direct_messages, 
+    @user = User.eager_load(
+      :servers,
+      :direct_messages,
       :friend_reqs,
       :friend_backs
-    )
+    ).eager_load(direct_messages: :members)
       .find_by_credentials(
         params[:user][:email], 
         params[:user][:password]

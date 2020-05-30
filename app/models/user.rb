@@ -67,13 +67,12 @@ class User < ApplicationRecord
     end
 
     def reset_session_token!
-        self.session_token = self.class.generate_session_token
-        self.save!
+        self.update!(session_token: self.class.generate_session_token)
         self.session_token
     end
 
     def friends
-      self.friend_back_ids + self.friend_req_ids
+      @friends ||= self.friend_back_ids + self.friend_req_ids
     end
 
 end
