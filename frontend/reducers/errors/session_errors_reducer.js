@@ -8,7 +8,12 @@ const sessionErrorsReducer =  (state = [], action) => {
             newState = [];
             return newState;
         case RECEIVE_SESSION_ERRORS:
-            return action.errors.responseJSON;
+            // debugger
+            if (action.errors.responseJSON) {
+                return action.errors.responseJSON;
+            } else {
+                return ["Oops! Something went wrong. Please try again"];
+            }
         case CLEAR_ERRORS:
             newState = [];
             return newState;

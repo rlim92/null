@@ -15,7 +15,10 @@
  */
 
 body {
+    padding: 0px;
+    margin: 0px;
     background-color :#282829;
+    color: white;
 }
 
 ::selection {
@@ -25,11 +28,136 @@ body {
   background: #28282960;
 }
 
-h1, h2, div, ul, li {
+h1, h2, h3, h4, div, ul, li, a {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0px;
     padding: 0px;
+    list-style: none;
 }
+
+
+.home-div {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar-div {
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #202325;
+}
+
+.activebar-div {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2f3136;
+}
+
+.server-bar-border-div {
+    width: 32px;
+    border-top: 2px solid rgb(255, 255, 255, 0.06);
+}
+
+.server-bar-div-li {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393f;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.server-bar-div-li:hover {
+    border-radius: 16px;
+    transition-duration: 0.5s;
+}
+/* .server-bar-div-li:hover,  {
+
+} */
+
+.me-div-li {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.dm-bar-div {
+    /* box-sizing: content-box; */
+    width: 235px;
+    padding-left: 5px;
+}
+
+.dm-header-div {
+    font-size: 11px;
+    margin: 10px;
+    margin-right: 0px;
+    text-transform: uppercase;
+}
+
+.search-div {
+    background-color: #202225;
+    border-radius: 4px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+    color: #72767D;
+}
+
+.dm-border-div {
+    width: 100%;
+    border-top: 1px solid #25262a;
+}
+
+.dm-names-li, a.link {
+    text-decoration: none;
+    color: #8e9297;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+.dm-member-div {
+    margin-bottom: 2px;
+}
+
+.dm-names-li {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dm-user-avatar-div {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dm-member-count {
+    font-size: 10px;
+}
+
+.dm-link, .friends-link {
+    height: 42px;
+    display:flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}
+
 
 .hidden {
     display: none;

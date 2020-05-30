@@ -4,6 +4,7 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import Rich from './rich';
 import Signup from './session/signup';
 import Login from './session/login';
+import Home from './home/home';
 
 const App = () => {
     return (
@@ -11,10 +12,10 @@ const App = () => {
             <header>
             </header>
             <Switch>
-                {/* <ProtectedRoute path="/"/> */}
-                <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />
-                <Route exact path="/" component={Rich} />
+                <ProtectedRoute path="/@me" component={Home}/>
+                <AuthRoute path="/signup" component={Signup} />
+                <AuthRoute path="/login" component={Login} />
+                <AuthRoute exact path="/" component={Rich} />
             </Switch>
         </div>
     )

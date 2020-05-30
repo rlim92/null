@@ -20,6 +20,7 @@ flame = User.create!(email: 'red@red.com', username: 'Flame', password: "volcano
 tidal = User.create!(email: 'blue@blue.com', username: 'Tidal', password: "tsunami")
 shock = User.create!(email: 'yellow@yellow.com', username: 'Shock', password: "lightning")
 flow = User.create!(email: 'green@green.com', username: 'Flow', password: "tornado")
+rock = User.create(email: "earth@earth.com", username: 'Rock', password: 'avalanche')
 
 dark = Server.create!(name: 'dark', description: 'into the void', owner_id: void.id)
 red = Server.create!(name: 'red', description: 'fire', owner_id: flame.id)
@@ -39,6 +40,7 @@ dm3 = DirectMessage.create!
 dm4 = DirectMessage.create!
 dm5 = DirectMessage.create!
 team_dm = DirectMessage.create!(is_group: true)
+edm = DirectMessage.create!
 
 Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: void.id)
 Membership.create!(member_id: rich.id, membershipable_type: "User", membershipable_id: flame.id)
@@ -51,6 +53,12 @@ Membership.create!(member_id: rich.id, membershipable_type: "Server", membership
 Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: blue.id)
 Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: yellow.id)
 Membership.create!(member_id: rich.id, membershipable_type: "Server", membershipable_id: green.id)
+
+Membership.create!(member_id: rock.id, membershipable_type: "Server", membershipable_id: dark.id)
+Membership.create!(member_id: rock.id, membershipable_type: "Server", membershipable_id: red.id)
+Membership.create!(member_id: rock.id, membershipable_type: "Server", membershipable_id: blue.id)
+Membership.create!(member_id: rock.id, membershipable_type: "Server", membershipable_id: yellow.id)
+Membership.create!(member_id: rock.id, membershipable_type: "Server", membershipable_id: green.id)
 
 Membership.create!(member_id: void.id, membershipable_type: "Server", membershipable_id: dark.id)
 Membership.create!(member_id: flame.id, membershipable_type: "Server", membershipable_id: red.id)
@@ -88,3 +96,6 @@ Membership.create!(member_id: flame.id, membershipable_type: "DirectMessage", me
 Membership.create!(member_id: tidal.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
 Membership.create!(member_id: shock.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
 Membership.create!(member_id: flow.id, membershipable_type: "DirectMessage", membershipable_id: team_dm.id)
+
+Membership.create!(member_id: rich.id, membershipable_type: "DirectMessage", membershipable_id: edm.id)
+Membership.create!(member_id: rock.id, membershipable_type: "DirectMessage", membershipable_id: edm.id)

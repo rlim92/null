@@ -49,3 +49,12 @@ export const signup = (user) => {
         );
     };
 };
+
+export const fetchCurrentUser = (userId) => {
+    return (dispatch) => {
+        return APIUtil.fetchCurrentUser(userId).then(
+            (user) => { dispatch(receiveCurrentUser(user)); },
+            (errors) => { dispatch(receiveErrors(errors)); }
+        );
+    };
+};

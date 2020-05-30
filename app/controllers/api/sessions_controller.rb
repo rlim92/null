@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  before_action :ensure_logged_in, only: :destroy
+  before_action :ensure_logged_in, only: [:show, :destroy]
 
   def create
     @user = User.eager_load(
@@ -7,10 +7,11 @@ class Api::SessionsController < ApplicationController
       :direct_messages,
       :friend_reqs,
       :friend_backs
-    ).eager_load(direct_messages: :members)
-      .find_by_credentials(
-        params[:user][:email], 
-        params[:user][:password]
+    ).eager_load(
+      direct_messages: :members
+    ).find_by_credentials(
+      params[:user][:email], 
+      params[:user][:password]
     )
 
     if @user
@@ -18,6 +19,25 @@ class Api::SessionsController < ApplicationController
       render 'api/users/current_user'
     else
       render json: ['Wrong username/password'], status: 420
+    end
+  end
+
+  def show
+    if params[:sessionId].to_i == current_user.id
+      @user = User.eager_load(
+        :servers,
+        :direct_messages,
+        :friend_reqs,
+        :friend_backs
+      ).eager_load(
+        direct_messages: :members
+      ).find_by(
+        id: current_user.id
+      )
+
+      render 'api/users/current_user'
+    else
+      render json: ['You are not the current user!'], status: 420
     end
   end
 

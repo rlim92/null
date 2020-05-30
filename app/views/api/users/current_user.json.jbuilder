@@ -26,7 +26,8 @@ json.directMessages do
                 non_friends << other unless @user.friends.include?(other)
             end
             other_ids << @user.id
-            json.member_ids other_ids
+            json.id dm.id
+            json.memberIds other_ids
         end
     end
 end
