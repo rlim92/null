@@ -9,12 +9,40 @@ class DMBar extends React.Component {
         this.mapDMs = this.mapDMs.bind(this);
     }
 
+    getIcons(num) {
+        switch (num) {
+            case 1:
+                return (
+                    <img height="30" width="30"
+                        src="https://image.flaticon.com/icons/svg/785/785218.svg"/>
+                )
+            case 2:
+                return (
+                    <img height="30" width="30"
+                    src="https://image.flaticon.com/icons/svg/606/606797.svg" />
+                )
+            case 3:
+                return (
+                    <img height="30" width="30"
+                    src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
+                )
+            case 4:
+                return (
+                    <img height="30" width="30"
+                    src="https://image.flaticon.com/icons/svg/615/615579.svg" />
+                )
+            default:
+                return "";
+        }
+    }
+
     mapDMs() {
         const { directMessages, users } = this.props;
 
         return directMessages.map((dm, idx) => {
             const memberCount = dm.memberIds.length > 2 ? <div className="dm-member-count">{dm.memberIds.length} Members</div> : "";
-            
+
+
             let memberNames = dm.memberIds.map( id => {
                 return users[id].username;
             })
@@ -25,10 +53,12 @@ class DMBar extends React.Component {
                 memberNames = `${memberNames.slice(0, 17)}...`;
             }
 
+            const img = this.getIcons(idx);
+
             return (
                 <Link to={`/@me/dms/${dm.id}`} key={`dm-${idx}`} className="link dm-link">
                     <li className="dm-names-li">
-                        <div className="dm-user-avatar-div"></div>
+                        <div className={`dm-user-avatar-div icon-num-${idx}`}>{img}</div>
                         <div className="dm-member-div">
                             <div>
                                 {memberNames}

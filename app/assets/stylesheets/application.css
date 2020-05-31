@@ -92,8 +92,9 @@ h1, h2, h3, h4, div, ul, li, a {
 
 .dm-bar-div {
     /* box-sizing: content-box; */
-    width: 235px;
-    padding-left: 5px;
+    width: 224px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .dm-header-div {
@@ -139,11 +140,30 @@ h1, h2, h3, h4, div, ul, li, a {
 }
 
 .dm-user-avatar-div {
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 32px;
     background-color: white;
     border-radius: 50%;
     margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-num-1 {
+    background-color: #e01e5a;
+}
+
+.icon-num-2 {
+    background-color: #36c5f0;
+}
+
+.icon-num-3 {
+    background-color: #ffeb3b;
+}
+
+.icon-num-4 {
+    background-color: #2eb67d;
 }
 
 .dm-member-count {
@@ -156,6 +176,11 @@ h1, h2, h3, h4, div, ul, li, a {
     flex-direction: row;
     /* justify-content: center; */
     align-items: center;
+}
+
+.dm-link:hover {
+    background-color: #35373c;
+    border-radius: 4px;
 }
 
 
