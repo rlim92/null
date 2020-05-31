@@ -11,19 +11,27 @@ class ServerBar extends React.Component {
 
     mapServers() {
         const { servers } = this.props;
-        if (!servers.length) return;
+
         return servers.map( (server, idx) => {
+            const firstChId = server.channelIds[0];
             return (
-                <div key={`server-${idx}`} className="server-bar-div-li">
-                    <li className="server-bar-li">
-                        {server.name.slice(0,1)}
-                    </li>
-                </div>
+                <Link to={`/channels/${server.id}/${firstChId}`} 
+                    key={`server-${idx}`} 
+                    className="server-link"
+                >
+                    <div className={`server-bar-div-li server-icon-${idx}`}>
+                        <li className="server-bar-li">
+                            {server.name.slice(0,1)}
+                        </li>
+                    </div>
+                </Link>
             )
         })
     }
 
     render() {
+        if (!this.props.servers) return null;
+
         return (
             <div className="server-bar-div">
                 {this.mapServers()}

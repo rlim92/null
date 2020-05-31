@@ -34,7 +34,7 @@ class Rich extends React.Component {
                 <h1 className="loader-h1 fade-out">Welcome to reactRich...</h1>
                 <h1 className="loader-h1 hidden">Click below to enter...</h1>
                 <div className="svg" onClick={this.handleClick.bind(this)}>
-                    <svg version="1.1" id="svg" x="0px" y="0px" width="250px" height="250px" viewBox="0 0 213.235 241.176" enableBackground="new 0 0 213.235 241.176" space="preserve" fill="#282829">
+                    {/* <svg version="1.1" id="svg" x="0px" y="0px" width="250px" height="250px" viewBox="0 0 213.235 241.176" enableBackground="new 0 0 213.235 241.176" space="preserve" fill="#282829">
                         <path d="M108.581,64.968V14.124l44.007,25.422L108.581,64.968" />
                         <path fillOpacity="0.9" d="M153.591,92.101V41.258L109.582,66.68L153.591,92.101" />
                         <path d="M155.586,92.062V41.221l44.009,25.42L155.586,92.062" />
@@ -53,7 +53,7 @@ class Rich extends React.Component {
                         <path fillOpacity="0.6" d="M59.709,92.101V41.258L15.701,66.68L59.709,92.101" />
                         <path fillOpacity="0.85" d="M61.562,92.092V41.249l44.007,25.419L61.562,92.092" />
                         <path fillOpacity="0.9" d="M106.62,64.968V14.124L62.614,39.546L106.62,64.968" />
-                    </svg>
+                    </svg> */}
                 </div>
             </div>
         )

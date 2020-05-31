@@ -18,6 +18,10 @@ class Server < ApplicationRecord
         through: :memberships,
         source: :member
 
+    has_many :channels,
+        class_name: :Channel,
+        foreign_key: :server_id
+
     def default_private
         self.is_public ||= false
     end

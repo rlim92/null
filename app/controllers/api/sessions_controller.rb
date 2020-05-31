@@ -3,12 +3,13 @@ class Api::SessionsController < ApplicationController
 
   def create
     @user = User.eager_load(
-      :servers,
       :direct_messages,
       :friend_reqs,
       :friend_backs
     ).eager_load(
       direct_messages: :members
+    ).eager_load(
+      servers: :channels
     ).find_by_credentials(
       params[:user][:email], 
       params[:user][:password]
@@ -25,12 +26,13 @@ class Api::SessionsController < ApplicationController
   def show
     if params[:sessionId].to_i == current_user.id
       @user = User.eager_load(
-        :servers,
         :direct_messages,
         :friend_reqs,
         :friend_backs
       ).eager_load(
         direct_messages: :members
+      ).eager_load(
+        servers: :channels
       ).find_by(
         id: current_user.id
       )

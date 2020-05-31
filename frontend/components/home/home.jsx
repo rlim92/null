@@ -14,7 +14,9 @@ class Home extends React.Component {
         const { sessionId, fetchCurrentUser, needPull } = this.props;
 
         if (needPull) {
-            fetchCurrentUser(sessionId);
+            fetchCurrentUser(sessionId).then(() => {
+                this.props.history.push('/@me');
+            });
         }
     }
 

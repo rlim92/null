@@ -13,22 +13,22 @@ class DMBar extends React.Component {
         switch (num) {
             case 1:
                 return (
-                    <img height="30" width="30"
+                    <img height="28" width="28"
                         src="https://image.flaticon.com/icons/svg/785/785218.svg"/>
                 )
             case 2:
                 return (
-                    <img height="30" width="30"
+                    <img height="28" width="28"
                     src="https://image.flaticon.com/icons/svg/606/606797.svg" />
                 )
             case 3:
                 return (
-                    <img height="30" width="30"
+                    <img height="28" width="28"
                     src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
                 )
             case 4:
                 return (
-                    <img height="30" width="30"
+                    <img height="28" width="28"
                     src="https://image.flaticon.com/icons/svg/615/615579.svg" />
                 )
             default:
@@ -47,10 +47,10 @@ class DMBar extends React.Component {
                 return users[id].username;
             })
 
-            memberNames = memberNames.slice(0, memberNames.length - 1).join(",");
+            memberNames = memberNames.slice(0, memberNames.length - 1).join(", ");
             
-            if (memberNames.length > 18) {
-                memberNames = `${memberNames.slice(0, 17)}...`;
+            if (memberNames.length > 23) {
+                memberNames = `${memberNames.slice(0, 22)}...`;
             }
 
             const img = this.getIcons(idx);
@@ -74,8 +74,10 @@ class DMBar extends React.Component {
     render() {
         return (
             <div className="dm-bar-div">
-                <div className="search-div">Find or start a conversation</div>
-                <div className="dm-border-div"></div>
+                <div className="search-header-div">
+                    <div className="search-div">Find or start a conversation      </div>
+                </div>
+                <div className="dm-border-div dm-border-border"></div>
                 <Link to="/@me/friends" className="link friends-link">
                     <li className="dm-names-li">
                         <div className="dm-user-avatar-div"></div>

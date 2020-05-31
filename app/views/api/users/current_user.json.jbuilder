@@ -9,9 +9,10 @@ end
 json.servers do
     @user.servers.each do |server|
         json.set! server.id do 
-            json.extract! server, :name, :description
-            json.isPublic server.is_public
-            json.ownerId server.owner_id
+            json.extract! server, :id, :name, :description
+            # json.isPublic server.is_public
+            # json.ownerId server.owner_id
+            json.channelIds server.channel_ids
         end
     end
 end
