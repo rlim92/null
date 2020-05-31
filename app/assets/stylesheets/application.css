@@ -17,16 +17,16 @@
 body {
     padding: 0px;
     margin: 0px;
-    background-color :#282829;
+    background-color :#36393f;
     color: white;
 }
 
-::selection {
-    background: #28282960; 
+/* ::selection {
+    background: #36393f; 
 }
 ::-moz-selection {
-    background: #28282960;
-}
+    background: #36393f;
+} */
 
 h1, h2, h3, h4, div, ul, li, a, input {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -112,6 +112,13 @@ h1, h2, h3, h4, div, ul, li, a, input {
     color: black;
 }
 
+.me-div {
+    height: 64px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+}
+
 .me-div-li {
     background-color: whitesmoke;
     color: black;
@@ -119,6 +126,7 @@ h1, h2, h3, h4, div, ul, li, a, input {
 
 .dm-bar-div {
     width: 240px;
+    height: calc(100vh - 52px);
 }
 
 .dm-header-div, .text-channels-header {
@@ -151,7 +159,10 @@ h1, h2, h3, h4, div, ul, li, a, input {
 
 .dm-border-div {
     width: 240px;
-    border-top: 1px solid #25262a;
+    border-bottom: 1px solid #25262a;
+    -webkit-box-shadow: 0 1px 1px 0px #25262a;
+    -moz-box-shadow: 0 1px 1px 0px #25262a;
+    box-shadow: 0 1px 1px 0px #25262a;
     /* margin-right: -16px; */
 }
 
@@ -221,6 +232,10 @@ h1, h2, h3, h4, div, ul, li, a, input {
     border-radius: 4px;
 }
 
+.channel-bar-div {
+    height: calc(100vh - 52px);
+}
+
 .channel-bar-server-header {
     height: 48px;
     width: 240px;
@@ -254,11 +269,16 @@ h1, h2, h3, h4, div, ul, li, a, input {
     display: flex;
     margin-right: 8px;
     margin-top: 20px;
+    margin-bottom: 0px;
     align-items: center;
 }
 
 .text-channels-header {
     margin-left: 5px;
+}
+
+.text-channels-header, .mini-down-arrow-icon {
+    margin-bottom: 6px;
 }
 
 .ch-link {
@@ -275,6 +295,40 @@ h1, h2, h3, h4, div, ul, li, a, input {
     padding-right: 10px;
     font-size: 20px;
 } 
+
+.footer-profile-div {
+    display: flex;
+    height: 52px;
+    width: 240px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2a2b2f;
+}
+
+.footer-current-username-div {
+    margin-left: 5px;
+}
+
+.logout-button {
+    margin-right: 8px;
+}
+
+.footer-profile-left-div {
+    display: flex;
+    align-items: center;
+}
+
+.footer-icon-div {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
 
 .hidden {
     display: none;
