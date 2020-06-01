@@ -29,7 +29,7 @@ class ChannelBar extends React.Component {
         const textChs = channels.map( (ch, idx) => {
             return (
                 <Link to={`/channels/${server.id}/${ch.id}`} key={`ch-${idx}`} className="link ch-link">
-                    <div className={`ch-hashtag-div icon-num-${idx}`}>#</div>
+                    <div className={`ch-hashtag-div`}>#</div>
                     <div className="ch-name-div">
                         {ch.name}
                     </div>
@@ -49,11 +49,15 @@ class ChannelBar extends React.Component {
                     <div className="channel-bar-server-name">
                         {server.name}
                     </div>
-                    <img src="https://image.flaticon.com/icons/svg/748/748063.svg" className="down-arrow-icon"/>
+                    <img src="https://image.flaticon.com/icons/svg/748/748063.svg" 
+                        className="down-arrow-icon"
+                    />
                 </div>
                 <div className="dm-border-div"></div>
                 <div className="text-chs-div">
-                    <img src="https://image.flaticon.com/icons/svg/748/748063.svg" className="mini-down-arrow-icon" />
+                    <img src="https://image.flaticon.com/icons/svg/748/748063.svg" 
+                        className="mini-down-arrow-icon" 
+                    />
                     <div className="text-channels-header">Text Channels</div>
                 </div>
                 {this.mapChs()}

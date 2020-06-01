@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchDMsMembers } from '../../actions/user_actions';
+// import { fetchDMsMembers } from '../../actions/user_actions';
+import { fetchUserDms } from '../../actions/dm_actions';
 
 class DMBar extends React.Component {
     constructor(props) {
@@ -15,9 +16,9 @@ class DMBar extends React.Component {
     }
 
     componentDidMount() {
-        const { fetchDMsMembers, currentUser } = this.props;
-        // debugger;
-        fetchDMsMembers(currentUser.dmIds)
+        const { fetchUserDms, currentUser } = this.props;
+
+        fetchUserDms(currentUser.id);
         this.needPull = false;
     }
 
@@ -31,17 +32,17 @@ class DMBar extends React.Component {
             case 2:
                 return (
                     <img height="28" width="28"
-                    src="https://image.flaticon.com/icons/svg/606/606797.svg" />
+                        src="https://image.flaticon.com/icons/svg/606/606797.svg"/>
                 )
             case 3:
                 return (
                     <img height="28" width="28"
-                    src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
+                        src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
                 )
             case 4:
                 return (
                     <img height="28" width="28"
-                    src="https://image.flaticon.com/icons/svg/615/615579.svg" />
+                        src="https://image.flaticon.com/icons/svg/615/615579.svg" />
                 )
             default:
                 return "";
@@ -83,8 +84,7 @@ class DMBar extends React.Component {
     }
 
     render() {
-        // debugger;
-        if (this.needPull) return <div className="dm-bar-div"></div>;
+        if (this.needPull || !this.props.directMessages.length || !this.props.users.length === 1) return <div className="dm-bar-div"></div>;
 
         return (
             <div className="dm-bar-div">
@@ -117,7 +117,8 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return {
-        fetchDMsMembers: (currentUserId) => dispatch(fetchDMsMembers(currentUserId))
+    //     fetchDMsMembers: (currentUserId) => dispatch(fetchDMsMembers(currentUserId))
+        fetchUserDms: (userId) => dispatch(fetchUserDms(userId))
     }
 };
 

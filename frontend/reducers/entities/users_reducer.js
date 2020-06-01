@@ -1,7 +1,7 @@
+import { merge } from 'lodash';
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_CHANNEL_INFO } from '../../actions/channel_actions';
-import { RECEIVE_DMS_MEMBERS } from '../../actions/user_actions';
-import { merge } from 'lodash';
+import { RECEIVE_USER_DMS } from '../../actions/dm_actions';
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -17,12 +17,12 @@ export default (state = {}, action) => {
             newState[chInfo.currentUserId] = state[chInfo.currentUserId];
 
             return merge({}, newState, chInfo.members)
-        case RECEIVE_DMS_MEMBERS:
-            const { memberInfo } = action;
+        case RECEIVE_USER_DMS:
+            const { userDmInfo } = action;
             newState = {};
-            newState[memberInfo.currentUserId] = state[memberInfo.currentUserId];
+            newState[userDmInfo.currentUserId] = state[userDmInfo.currentUserId];
 
-            return merge({}, newState, memberInfo.members)
+            return merge({}, newState, userDmInfo.members)
         default:
             return state;
     };

@@ -12,14 +12,15 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const { sessionId, fetchCurrentUser, needPull } = this.props;
+        const { sessionId, fetchCurrentUser, needPull, location } = this.props;
 
         if (needPull) {
-            fetchCurrentUser(sessionId).then(() => {
+            fetchCurrentUser(sessionId);
+            if (location.pathname === "/") {
                 this.props.history.push('/@me');
-            });
+            }
         } else {
-            this.props.history.push('/@me')
+            this.props.history.push('/@me');
         }
     }
 

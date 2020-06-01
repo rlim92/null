@@ -21,7 +21,7 @@ const receiveChannelInfo = (channelInfo) => {
 export const fetchServerChs = (serverId) => {
     return (dispatch) => {
         return APIUtil.fetchServerChs(serverId).then(servChInfo => {
-            dispatch(receiveServerChs(servChInfo));
+            return dispatch(receiveServerChs(servChInfo));
         });
     };
 };

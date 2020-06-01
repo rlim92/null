@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
     before_action :ensure_logged_in
 
     def index
-        # debugger
         if params[:dm_ids]
             @dms = DirectMessage.includes(:members).find(params[:dm_ids])
             if @dms

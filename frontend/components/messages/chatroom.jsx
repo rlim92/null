@@ -53,10 +53,10 @@ class Chatroom extends React.Component {
     mapMessages() {
         const { messages, members } = this.props;
 
-        const messageLis = messages.map( msg => {
+        const messageLis = messages.map((msg, idx) => {
             const author = members[msg.authorId];
             return (
-                <MessageItem msg={msg} author={author} />
+                <MessageItem key={`msg-${idx}`} msg={msg} author={author} />
             )
         })
 
