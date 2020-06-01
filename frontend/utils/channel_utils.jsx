@@ -5,7 +5,7 @@ export const fetchServerChs = serverId => {
     });
 };
 
-export const fetchActiveCh = channelId => {
+export const fetchChannelInfo = channelId => {
     return $.ajax({
         method: "GET",
         url: `/api/channels/${channelId}`

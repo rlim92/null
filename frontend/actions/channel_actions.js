@@ -1,7 +1,7 @@
 import * as APIUtil from '../utils/channel_utils';
 
 export const RECEIVE_SERVER_CHANNELS = "RECEIVE_SERVER_CHANNELS";
-export const RECEIVE_ACTIVE_CHANNEL = "RECEIVE_ACTIVE_CHANNEL";
+export const RECEIVE_CHANNEL_INFO = "RECEIVE_CHANNEL_INFO";
 
 const receiveServerChs = (servChInfo) => {
     return {
@@ -10,10 +10,26 @@ const receiveServerChs = (servChInfo) => {
     }
 }
 
-export const fetchServerChs = serverId => {
+const receiveChannelInfo = (channelInfo) => {
+    return {
+        type: RECEIVE_CHANNEL_INFO,
+        channelInfo
+    }
+}
+
+
+export const fetchServerChs = (serverId) => {
     return (dispatch) => {
         return APIUtil.fetchServerChs(serverId).then(servChInfo => {
             dispatch(receiveServerChs(servChInfo));
         });
+    };
+};
+
+export const fetchChannelInfo = (channelId) => {
+    return (dispatch) => {
+        return APIUtil.fetchChannelInfo(channelId).then(
+            channelInfo => dispatch(receiveChannelInfo(channelInfo))
+        )
     };
 };

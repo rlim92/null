@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../utils/session_api_util';
+import { logout } from '../../actions/session_actions';
 
 const FooterProfile = props => {
     return (
@@ -34,4 +34,4 @@ const mDTP = dispatch => {
 }
 
 
-export default connect(mSTP, null)(FooterProfile);
+export default connect(mSTP, mDTP)(FooterProfile);

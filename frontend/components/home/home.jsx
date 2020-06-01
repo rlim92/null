@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import SideBar from './sidebar';
 import ActiveBar from './activebar';
+import ChannelChatRoom from '../channel/channel_show';
 import { fetchCurrentUser } from '../../actions/session_actions';
 
 class Home extends React.Component {
@@ -17,6 +18,8 @@ class Home extends React.Component {
             fetchCurrentUser(sessionId).then(() => {
                 this.props.history.push('/@me');
             });
+        } else {
+            this.props.history.push('/@me')
         }
     }
 
@@ -26,7 +29,9 @@ class Home extends React.Component {
             <div className="home-div">
                 <SideBar />
                 <ActiveBar />
-                {/* <ChatRoom /> */}
+                <Switch>
+                    <Route path="/channels/:serverId/:channelId" component={ChannelChatRoom}/>
+                </Switch>
             </div>
         )
     }

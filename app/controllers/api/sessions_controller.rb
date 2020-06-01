@@ -2,13 +2,13 @@ class Api::SessionsController < ApplicationController
   before_action :ensure_logged_in, only: [:show, :destroy]
 
   def create
-    @user = User.eager_load(
+    @user = User.includes(
       :direct_messages,
       :friend_reqs,
       :friend_backs
-    ).eager_load(
+    ).includes(
       direct_messages: :members
-    ).eager_load(
+    ).includes(
       servers: :channels
     ).find_by_credentials(
       params[:user][:email], 
@@ -25,13 +25,13 @@ class Api::SessionsController < ApplicationController
 
   def show
     if params[:sessionId].to_i == current_user.id
-      @user = User.eager_load(
+      @user = User.includes(
         :direct_messages,
         :friend_reqs,
         :friend_backs
-      ).eager_load(
+      ).includes(
         direct_messages: :members
-      ).eager_load(
+      ).includes(
         servers: :channels
       ).find_by(
         id: current_user.id

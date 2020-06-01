@@ -24,7 +24,9 @@ json.directMessages do
         json.set! dm.id do
             other_ids = dm.member_ids - [@user.id]
             other_ids.each do |other|
-                non_friends << other unless @user.friends.include?(other)
+                if !@user.friends.include?(other) && !non_friends.include?(other)
+                    non_friends << other
+                end
             end
             other_ids << @user.id
             json.id dm.id

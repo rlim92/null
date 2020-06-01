@@ -43,7 +43,6 @@ class ChannelBar extends React.Component {
     render() {
         const { server, channels } = this.props;
         if (!channels.length || channels[0].serverId !== server.id) return (<div className="channel-bar-div"></div>);
-        // debugger;
         return (
             <div className="channel-bar-div">
                 <div className="channel-bar-server-header">

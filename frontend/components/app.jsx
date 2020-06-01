@@ -12,9 +12,9 @@ const App = () => {
             <header>
             </header>
             <Switch>
-                <ProtectedRoute path="/" component={Home}/>
                 <AuthRoute path="/signup" component={Signup} />
                 <AuthRoute path="/login" component={Login} />
+                <ProtectedRoute path="/" component={Home}/>
                 <AuthRoute exact path="/" component={Rich} />
             </Switch>
         </div>

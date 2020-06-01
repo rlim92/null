@@ -6,7 +6,6 @@ export default (state = {}, action) => {
     let newState;
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            // debugger
             return action.userInfo.directMessages
         case LOGOUT_CURRENT_USER:
             return {};

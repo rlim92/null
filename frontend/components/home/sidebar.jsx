@@ -7,7 +7,7 @@ const Sidebar = (props) => {
     return (
         <div className="sidebar-div">
             <div className="me-div">
-                <Link to="/@me" className="link">
+                <Link to={{ pathname: '/@me', state: "fromLink" }} className="link">
                     <div className="server-bar-div-li me-div-li">
                         <li className="me-li server-bar-li">
                             <img src="https://image.flaticon.com/icons/svg/860/860168.svg" height="44" width="44"/>

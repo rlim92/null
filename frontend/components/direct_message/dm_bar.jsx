@@ -1,12 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchDMsMembers } from '../../actions/user_actions';
 
 class DMBar extends React.Component {
     constructor(props) {
         super(props);
 
+        if (props.location && props.location.state) {
+            this.needPull = true;
+        }
+
         this.mapDMs = this.mapDMs.bind(this);
+    }
+
+    componentDidMount() {
+        const { fetchDMsMembers, currentUser } = this.props;
+        // debugger;
+        fetchDMsMembers(currentUser.dmIds)
+        this.needPull = false;
     }
 
     getIcons(num) {
@@ -38,7 +50,6 @@ class DMBar extends React.Component {
 
     mapDMs() {
         const { directMessages, users } = this.props;
-
         return directMessages.map((dm, idx) => {
             const memberCount = dm.memberIds.length > 2 ? <div className="dm-member-count">{dm.memberIds.length} Members</div> : "";
 
@@ -72,6 +83,9 @@ class DMBar extends React.Component {
     }
 
     render() {
+        // debugger;
+        if (this.needPull) return <div className="dm-bar-div"></div>;
+
         return (
             <div className="dm-bar-div">
                 <div className="search-header-div">
@@ -97,8 +111,15 @@ const mSTP = state => {
     return {
         directMessages: Object.values(state.entities.directMessages),
         users: state.entities.users,
+        currentUser: state.entities.users[state.session.id],
     }
-}
+};
+
+const mDTP = dispatch => {
+    return {
+        fetchDMsMembers: (currentUserId) => dispatch(fetchDMsMembers(currentUserId))
+    }
+};
 
 
-export default connect(mSTP, null)(DMBar);
+export default connect(mSTP, mDTP)(DMBar);

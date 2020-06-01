@@ -262,6 +262,7 @@ h1, h2, h3, h4, div, ul, li, a, input {
     height: 6px;
     filter: invert(1);
     margin-left: 5px;
+    margin-top: 10px;
     /* margin-right: 16px; */
 }
 
