@@ -1,5 +1,5 @@
 json.directMessages do
-    @user.direct_messages.each do |dm|
+    @direct_messages.each do |dm|
        json.set! dm.id do
             other_ids = dm.member_ids - [current_user.id]
             other_ids << current_user.id
@@ -10,7 +10,7 @@ json.directMessages do
 end
 
 json.members do
-    @user.direct_messages.each do |dm|
+    @direct_messages.each do |dm|
         dm.members.each do |member|
             next if member.id == current_user.id
             json.set! member.id do

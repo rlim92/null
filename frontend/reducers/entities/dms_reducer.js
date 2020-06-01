@@ -1,5 +1,4 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../../actions/session_actions';
-import { merge } from 'lodash';
+import { LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_USER_DMS } from '../../actions/dm_actions';
 
 export default (state = {}, action) => {

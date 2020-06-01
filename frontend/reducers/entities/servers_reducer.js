@@ -1,5 +1,5 @@
-import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 import { merge } from 'lodash';
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_SERVER_CHANNELS } from '../../actions/channel_actions';
 
 const serversReducer = (state = {}, action) => {

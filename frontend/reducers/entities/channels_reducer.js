@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import { RECEIVE_SERVER_CHANNELS } from '../../actions/channel_actions';
 
 

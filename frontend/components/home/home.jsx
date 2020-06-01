@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import SideBar from './sidebar';
 import ActiveBar from './activebar';
 import ChannelChatRoom from '../channel/channel_show';
+import DmChatRoom from '../direct_message/dm_show';
 import { fetchCurrentUser } from '../../actions/session_actions';
 
 class Home extends React.Component {
@@ -32,6 +33,7 @@ class Home extends React.Component {
                 <ActiveBar />
                 <Switch>
                     <Route path="/channels/:serverId/:channelId" component={ChannelChatRoom}/>
+                    <Route path="/@me/dms/:dmId" component={DmChatRoom} />
                 </Switch>
             </div>
         )

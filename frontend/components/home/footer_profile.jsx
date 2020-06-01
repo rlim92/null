@@ -14,7 +14,12 @@ const FooterProfile = props => {
                 </div>
             </div>
             <div>
-                <button className="logout-button" onClick={props.logout}>Logout</button>
+                <button className="logout-button" onClick={()=> {
+                    App.cable.disconnect();
+                    props.logout() 
+                }}>
+                    Logout
+                </button>
             </div>
         </div>
     );

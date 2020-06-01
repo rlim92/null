@@ -3,7 +3,6 @@ class Api::SessionsController < ApplicationController
 
   def create
     @user = User.includes(
-      :direct_messages,
       :friend_reqs,
       :friend_backs
     ).includes(

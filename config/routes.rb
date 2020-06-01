@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :channels, only: [:index]
     end
     resources :channels, only: [:show]
+    resources :direct_messages, only: [] do 
+      resources :messages, only: [:index]
+    end
 
     get 'session/:sessionId', action: :show, controller: 'sessions'
   end
