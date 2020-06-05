@@ -51,11 +51,16 @@ class DMBar extends React.Component {
 
     mapDMs() {
         const { directMessages, users } = this.props;
-        return directMessages.map((dm, idx) => {
+        let needPull;
+
+        const dmLis = directMessages.map((dm, idx) => {
             const memberCount = dm.memberIds.length > 2 ? <div className="dm-member-count">{dm.memberIds.length} Members</div> : "";
 
-
             let memberNames = dm.memberIds.map( id => {
+                if (!users[id]) {
+                    needPull = true;
+                    return;
+                }
                 return users[id].username;
             })
 
@@ -81,10 +86,16 @@ class DMBar extends React.Component {
                 </Link >
             )
         })
+
+        if (needPull) {
+            return [];
+        } else {
+            return dmLis;
+        }
     }
 
     render() {
-        if (this.needPull || !this.props.directMessages.length || !this.props.users.length === 1) return <div className="dm-bar-div"></div>;
+        if (this.needPull) return <div className="dm-bar-div"></div>;
 
         return (
             <div className="dm-bar-div">

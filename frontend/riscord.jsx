@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             errors: {
                 session: []
+            },
+            ui: {
+                loading: true
             }
         };
         store = configureStore(preloadedState);

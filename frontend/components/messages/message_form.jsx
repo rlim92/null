@@ -16,7 +16,7 @@ class MessageForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
+        if (!this.state.text) return;
         App.currentChannel.speak({ message: this.state.text });
         this.setState({ text: "" });
     }

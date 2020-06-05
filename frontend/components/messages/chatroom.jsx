@@ -18,7 +18,7 @@ class Chatroom extends React.Component {
 
     componentDidUpdate(prevProps) {
         const { chatType, match, fetchChatroomInfo} = this.props;
-
+        debugger;
         if (prevProps.chatType !== chatType || match.params.channelId !== prevProps.match.params.channelId || match.params.dmId !== prevProps.match.params.dmId) {
             fetchChatroomInfo().then(() => this.activateLive());
         }
@@ -52,27 +52,38 @@ class Chatroom extends React.Component {
 
     mapMessages() {
         const { messages, members } = this.props;
+        let dontRender;
 
         const messageLis = messages.map((msg, idx) => {
             const author = members[msg.authorId];
+            if (!author && !dontRender) dontRender = true;
             return (
                 <MessageItem key={`msg-${idx}`} msg={msg} author={author} />
             )
         })
-
-        return messageLis;
+        if (dontRender) {
+            return [];
+        } else {
+            return messageLis;
+        }
     }
 
     render() {
-        const { channel, dm, members } = this.props;
+        const { channel, dm, members, currentUserId } = this.props;
         let name, chatroom, chatType;
         if (!channel && !dm) return null;
+        if (Object.values(members).includes(undefined)) return null;
         if (channel) {
             name = channel.name;
             chatroom = channel;
             chatType = "#";
         } else if (dm && !dm.name) {
-            name = Object.values(members).map(mem => mem.username).join(", ");
+            name = []
+            Object.values(members).forEach(mem => { 
+                if (currentUserId === mem.id) return;
+                name.push(mem.username);
+            })
+            name = name.join(", ");
             chatroom = dm;
             chatType = "@";
         }
@@ -81,7 +92,7 @@ class Chatroom extends React.Component {
             <div className="chatroom-div-container">
                 <div className="chatroom-header-div">
                     <div>
-                        {name}
+                        {chatType}{name}
                     </div>
                 </div>
                 <ul className="message-ul">

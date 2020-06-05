@@ -1,10 +1,10 @@
-const uiReducer =  (state = {}, action) => {
-    Object.freeze(state);
-    let newState;
-    switch (action.type) {
-        default:
-            return state;
-    }
-};
+import { combineReducers } from 'redux';
+import modal from './modal_reducer'
+import loading from './loading_reducer';
+
+const uiReducer = combineReducers({
+    modal,
+    loading
+});
 
 export default uiReducer;

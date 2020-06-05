@@ -2,20 +2,16 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import Rich from './rich';
-import Signup from './session/signup';
-import Login from './session/login';
 import Home from './home/home';
+import Modal from './ui/modal';
 
 const App = () => {
     return (
         <div className="app-div">
-            <header>
-            </header>
+            <Modal />
             <Switch>
-                <AuthRoute path="/signup" component={Signup} />
-                <AuthRoute path="/login" component={Login} />
-                <ProtectedRoute path="/" component={Home}/>
                 <AuthRoute exact path="/" component={Rich} />
+                <ProtectedRoute path="/" component={Home}/>
             </Switch>
         </div>
     )

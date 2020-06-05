@@ -8,21 +8,23 @@ const mSTP = state => {
     };
 };
 
-const Auth = ({ loggedIn, path, component: Component }) => (
+const Auth = ({ loggedIn, path, component: Component }) => ( // when not logged in
     <Route
         path={path}
         render={props => (
-            loggedIn ? <Redirect to="/" /> : <Component {...props} />
+            loggedIn ? <Redirect to="/@me" /> : <Component {...props} />
         )}
     />
 );
 
-const Protected = ({ loggedIn, path, component: Component }) => (
+const Protected = ({ loggedIn, path, component: Component }) => ( // when logged in
     <Route
         path={path}
-        render={props => (
-            loggedIn ? <Component {...props} /> : <Redirect to="/login" />
-        )}
+        render={props => {
+            return (
+                loggedIn ? <Component {...props} /> : <Redirect to="/" />
+            )
+        }}
     />
 );
 

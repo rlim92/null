@@ -10,9 +10,11 @@ const mSTP = (state, ownProps) => {
     const messages = Object.values(state.entities.messages);
     const members = {};
 
-    dm.memberIds.forEach(dmId => {
-        members[dmId] = state.entities.users[dmId];
-    });
+    if (dm) {
+        dm.memberIds.forEach(dmId => {
+            members[dmId] = state.entities.users[dmId];
+        });
+    }
 
     return {
         dm,

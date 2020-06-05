@@ -12,17 +12,17 @@ export const receiveMessage = (message) => {
     };
 };
 
-const receiveDmMsgs = (messages) => {
+const receiveDmMsgs = (dmInfo) => {
     return {
         type: RECEIVE_DM_MESSAGES,
-        messages
+        dmInfo
     }
 }
 
 export const fetchDmMsgs = (dmId) => {
     return (dispatch) => {
-        return APIUtil.fetchDmMsgs(dmId).then(messages => {
-            return dispatch(receiveDmMsgs(messages));
+        return APIUtil.fetchDmMsgs(dmId).then(dmInfo => {
+            return dispatch(receiveDmMsgs(dmInfo));
         });
     };
 };

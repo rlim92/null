@@ -23,8 +23,9 @@ class SessionForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
-        this.props.action(this.state);
+        this.props.action(this.state).then(() => {
+            this.props.closeModal();
+        });
     }
     
     usernameInput() {
@@ -75,7 +76,6 @@ class SessionForm extends React.Component {
                     />
                     <button>{this.props.formType}!</button>
                 </form>
-                <Link to={this.link}>{this.link.slice(1)}</Link>
             </div>
         )
     }

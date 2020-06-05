@@ -2,6 +2,7 @@ import { merge } from 'lodash';
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../../actions/session_actions';
 import { RECEIVE_CHANNEL_INFO } from '../../actions/channel_actions';
 import { RECEIVE_USER_DMS } from '../../actions/dm_actions';
+import { RECEIVE_DM_MESSAGES } from '../../actions/message_actions';
 
 export default (state = {}, action) => {
     Object.freeze(state);
@@ -22,7 +23,9 @@ export default (state = {}, action) => {
             newState = {};
             newState[userDmInfo.currentUserId] = state[userDmInfo.currentUserId];
 
-            return merge({}, newState, userDmInfo.members)
+            return merge({}, newState, userDmInfo.members);
+        case RECEIVE_DM_MESSAGES:
+            return merge({}, state, action.dmInfo.members);
         default:
             return state;
     };
