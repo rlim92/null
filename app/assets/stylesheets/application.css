@@ -134,10 +134,6 @@ h1, h2, h3, h4, div, ul, li, a, input, p {
     width: 8px;
     /* animation: createBox .4s; */
 }
-/* .server-item-div:hover .invis-serv-div, .me-div:hover .invis-me-div {
-    animation: createBox .3s;
-    height: 20px;
-} */
 
 .go-active-serv {
     background-color: white;
@@ -145,7 +141,6 @@ h1, h2, h3, h4, div, ul, li, a, input, p {
     border-radius: 8px;
     animation: createBox .3s;
 }
-
 
 @keyframes createBox {
     from {
@@ -155,8 +150,6 @@ h1, h2, h3, h4, div, ul, li, a, input, p {
     transform: scale(1);
     }
 }
-
-
 
 .server-item-div {
     display: flex;
