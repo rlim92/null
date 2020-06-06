@@ -6,6 +6,7 @@ class Chatroom extends React.Component {
     constructor(props) {
         super(props);
 
+        this.bottom = React.createRef();
         this.activateLive = this.activateLive.bind(this);
         this.mapMessages = this.mapMessages.bind(this);
     }
@@ -13,14 +14,18 @@ class Chatroom extends React.Component {
     componentDidMount() {
         const { fetchChatroomInfo } = this.props;
 
-        fetchChatroomInfo().then(() => this.activateLive());
+        fetchChatroomInfo().then(this.activateLive);
     }
 
     componentDidUpdate(prevProps) {
-        const { chatType, match, fetchChatroomInfo} = this.props;
-        debugger;
+        const { chatType, match, fetchChatroomInfo, } = this.props;
+
+        if (this.bottom.current) {
+            this.bottom.current.scrollIntoView();
+        }
+
         if (prevProps.chatType !== chatType || match.params.channelId !== prevProps.match.params.channelId || match.params.dmId !== prevProps.match.params.dmId) {
-            fetchChatroomInfo().then(() => this.activateLive());
+            fetchChatroomInfo().then(this.activateLive);
         }
     }
 
@@ -52,27 +57,21 @@ class Chatroom extends React.Component {
 
     mapMessages() {
         const { messages, members } = this.props;
-        let dontRender;
 
         const messageLis = messages.map((msg, idx) => {
             const author = members[msg.authorId];
-            if (!author && !dontRender) dontRender = true;
             return (
                 <MessageItem key={`msg-${idx}`} msg={msg} author={author} />
             )
         })
-        if (dontRender) {
-            return [];
-        } else {
-            return messageLis;
-        }
+
+        return messageLis;
     }
 
     render() {
         const { channel, dm, members, currentUserId } = this.props;
         let name, chatroom, chatType;
         if (!channel && !dm) return null;
-        if (Object.values(members).includes(undefined)) return null;
         if (channel) {
             name = channel.name;
             chatroom = channel;
@@ -80,8 +79,10 @@ class Chatroom extends React.Component {
         } else if (dm && !dm.name) {
             name = []
             Object.values(members).forEach(mem => { 
-                if (currentUserId === mem.id) return;
-                name.push(mem.username);
+                if (mem) {
+                    if (currentUserId === mem.id) return;
+                    name.push(mem.username);
+                }
             })
             name = name.join(", ");
             chatroom = dm;
@@ -91,12 +92,14 @@ class Chatroom extends React.Component {
         return (
             <div className="chatroom-div-container">
                 <div className="chatroom-header-div">
-                    <div>
-                        {chatType}{name}
+                    <div className="chatroom-title-div">
+                        <div className="chat-type-span">{chatType}</div>
+                        <div className="title-div">{name}</div>
                     </div>
                 </div>
                 <ul className="message-ul">
                     {this.mapMessages()}
+                    <div ref={this.bottom}></div>
                 </ul>
                 <MessageForm chatroom={chatroom} chatType={chatType} name={name}/>
             </div>

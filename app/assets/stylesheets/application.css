@@ -77,6 +77,10 @@ h1, h2, h3, h4, div, ul, li, a, input, p {
     cursor: pointer;
 }
 
+.server-bar-div {
+    margin-left: -8px;
+}
+
 .server-bar-div-li, .server-link {
     color: white;
     text-decoration: none;
@@ -112,16 +116,77 @@ h1, h2, h3, h4, div, ul, li, a, input, p {
     color: black;
 }
 
+.server-bar-div-li.active-serv {
+    border-radius: 16px;
+    background-color: white;
+    color: black;
+}
+
+.invis-serv-div {
+    width: 8px;
+    margin-right: 8px;
+    /* animation: createBox .3s; */
+    /* transition-duration: 0.4s; */
+}
+
+.invis-me-div {
+    /* animation: createBox .3s; */
+    width: 8px;
+    /* animation: createBox .4s; */
+}
+/* .server-item-div:hover .invis-serv-div, .me-div:hover .invis-me-div {
+    animation: createBox .3s;
+    height: 20px;
+} */
+
+.go-active-serv {
+    background-color: white;
+    height: 40px;
+    border-radius: 8px;
+    animation: createBox .3s;
+}
+
+
+@keyframes createBox {
+    from {
+    transform: scale(0);
+    }
+    to {
+    transform: scale(1);
+    }
+}
+
+
+
+.server-item-div {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    width: 72px;
+    /* justify-content: center; */
+}
+
+.server-item-div:first-of-type {
+    margin-top: 4px;
+}
+
 .me-div {
     height: 64px;
     margin-top: 4px;
     display: flex;
+    margin-left: -8px;
+    /* justify-content: center; */
     align-items: center;
+    width: 72px;
 }
 
 .me-div-li {
     background-color: whitesmoke;
     color: black;
+}
+
+.server-bar-div-li.active-serv {
+    border-radius: 16px;
 }
 
 .dm-bar-div {

@@ -16,10 +16,6 @@ export default (state = {}, action) => {
             return action.channelInfo.messages;
         case RECEIVE_DM_MESSAGES:
             return action.dmInfo.messages;
-        case RECEIVE_USER_DMS:
-            if (!action.messages) return {};
-
-            return action.messages;
         default:
             return state;
     };

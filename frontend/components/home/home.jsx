@@ -39,8 +39,8 @@ class Home extends React.Component {
 
         return (
             <div className="home-div">
-                <SideBar />
-                <ActiveBar />
+                <Route path="/" component={SideBar} />
+                <Route path="/" component={ActiveBar} />
                 <Switch>
                     <Route path="/channels/:serverId/:channelId" component={ChannelChatRoom}/>
                     <Route path="/@me/dms/:dmId" component={DmChatRoom} />
