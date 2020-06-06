@@ -1,0 +1,151 @@
+.sidebar-div {
+    width: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #202325;
+}
+
+
+.server-bar-border-div {
+    width: 32px;
+    border-top: 2px solid rgb(255, 255, 255, 0.06);
+}
+
+.server-bar-div-li {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36393f;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.server-bar-div {
+    margin-left: -8px;
+}
+
+.server-bar-div-li, .server-link {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* server hover effect */
+.server-bar-div-li:hover {
+    border-radius: 16px;
+    transition-duration: 0.3s;
+}
+
+.server-icon-0:hover {
+    background-color: white;
+    color: black;
+}
+
+.server-icon-1:hover {
+    background-color: #e01e5a;
+    color: black;
+}
+
+.server-icon-2:hover {
+    background-color: #36c5f0;
+    color: black;
+}
+
+.server-icon-3:hover {
+    background-color: #ffeb3b;
+    color: black;
+}
+
+.server-icon-4:hover {
+    background-color: #2eb67d;
+    color: black;
+}
+
+.server-bar-div-li.active-serv {
+    border-radius: 16px;
+    background-color: white;
+    color: black;
+}
+
+.me-div:hover .invis-me-div, .server-item-div:hover .invis-serv-div {
+    background-color: white;
+    height: 20px;
+    border-radius: 8px;
+    animation: createLine .3s;
+}
+
+.server-link:active, .me-link:active {
+    transform: translateY(1px);
+}
+
+/* active server animation */
+.invis-serv-div {
+    width: 8px;
+    margin-right: 8px;
+}
+
+.invis-me-div {
+    width: 8px;
+}
+
+#go-active-serv {
+    background-color: white;
+    height: 40px;
+    border-radius: 8px;
+    animation: createLine1 .3s;
+}
+
+@keyframes createLine {
+    from {
+    transform: scale(0);
+    }
+    to {
+    transform: scale(1);
+    }
+}
+
+@keyframes createLine1 {
+    from {
+    transform: scale3d(1, 0.5, 1);
+    }
+    to {
+    transform: scale3d(1, 1, 1);
+    }
+}
+
+.server-item-div {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    width: 72px;
+    /* justify-content: center; */
+}
+
+.server-item-div:first-of-type {
+    margin-top: 4px;
+}
+
+.me-div {
+    height: 64px;
+    margin-top: 4px;
+    display: flex;
+    margin-left: -8px;
+    /* justify-content: center; */
+    align-items: center;
+    width: 72px;
+}
+
+.me-div-li {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.server-bar-div-li.active-serv {
+    border-radius: 16px;
+}

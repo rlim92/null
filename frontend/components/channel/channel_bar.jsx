@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class ChannelBar extends React.Component {
     constructor(props) {
         super(props);
-
+        
         this.mapChs = this.mapChs.bind(this);
     }
 

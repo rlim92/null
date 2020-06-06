@@ -40,10 +40,9 @@ class ServerBar extends React.Component {
             const firstChId = server.channelIds[0];
             const activeServ = this.state.activeServ === server.id ? "active-serv" : ""
             return (
-                <div className="server-item-div">
-                    <div className={`invis-serv-div go-${activeServ}`}></div>
+                <div className="server-item-div" key={`server-${idx}`} >
+                    <div className={`invis-serv-div`} id={`go-${activeServ}`}></div>
                     <Link to={`/channels/${server.id}/${firstChId}`} 
-                        key={`server-${idx}`} 
                         className="server-link"
                     >
                         <div onClick={() => this.activeServ(server.id)} 
@@ -65,8 +64,8 @@ class ServerBar extends React.Component {
         return (
             <>
                 <div className="me-div">
-                    <div className={`invis-me-div go-${activeMe}`}></div>
-                    <Link to={{ pathname: '/@me', state: "fromLink" }} className="link">
+                    <div className={`invis-me-div`} id={`go-${activeMe}`}></div>
+                    <Link to={{ pathname: '/@me', state: "fromLink" }} className="link me-link">
                         <div className={`server-bar-div-li me-div-li ${activeMe}`}>
                             <li className="me-li server-bar-li">
                                 <img src="https://image.flaticon.com/icons/svg/860/860168.svg" height="44" width="44" />
