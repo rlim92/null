@@ -13,7 +13,8 @@ class Api::ChannelsController < ApplicationController
 
     def show
         @channel = Channel.includes(:members, :messages).find(params[:id].to_i)
-        if @channel
+        @members = User.with_attached_avatar.where(id: @channel.member_ids)
+        if @channel && @members
             render :show
         else
             render json: @channel.errors.full_messages, status: 420

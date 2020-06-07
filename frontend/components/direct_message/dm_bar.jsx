@@ -54,7 +54,6 @@ class DMBar extends React.Component {
     mapDMs() {
         const { directMessages, users } = this.props;
         let needPull;
-        let img;
 
         const dmLis = directMessages.map((dm, idx) => {
             const memberCount = dm.memberIds.length > 2 ? <div className="dm-member-count">{dm.memberIds.length} Members</div> : "";
@@ -73,7 +72,7 @@ class DMBar extends React.Component {
                 memberNames = `${memberNames.slice(0, 22)}...`;
             }
 
-            img = this.getIcons(dm);
+            const img = this.getIcons(dm);
 
             return (
                 <Link to={`/@me/dms/${dm.id}`} key={`dm-${idx}`} className="link dm-link">

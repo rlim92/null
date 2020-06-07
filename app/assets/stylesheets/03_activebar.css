@@ -105,6 +105,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
 }
 
 .icon-num-1 {
@@ -125,7 +126,8 @@
 
 .avatar-img {
     border-radius: 50%;
-    background-color: #2f3136;
+    /* background-color: #2f3136; */
+    background-color: #303136;
 }
 
 .dm-member-count {
@@ -136,7 +138,6 @@
     height: 42px;
     display:flex;
     flex-direction: row;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -157,6 +158,7 @@
     justify-content: space-between;
     align-items: center;
 }
+
 .channel-bar-server-name {
     margin-left: 16px;
     font-size: 15px;

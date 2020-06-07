@@ -6,9 +6,7 @@ const MessageItem = ({ msg, author }) => {
     if (!author) return null;
     return (
         <li className="message-item-li">
-            <div className="message-item-icon-div">
-
-            </div>
+            <img className="message-item-icon" src={author.avatarUrl} height="40" width="40" alt=""/>
             <div className="message-item-content-div">
                 <div className="message-item-author-date-div">
                     <div className="message-item-author-div">

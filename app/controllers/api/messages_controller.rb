@@ -3,7 +3,8 @@ class Api::MessagesController < ApplicationController
 
     def index
         @dm = DirectMessage.includes(:messages, :members).find(params[:direct_message_id].to_i)
-        if @dm
+        @members = User.with_attached_avatar.where(id: @dm.member_ids)
+        if @dm && @members
             render :index
         else
             render json: @dm.errors.full_messages, status: 420

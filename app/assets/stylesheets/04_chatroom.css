@@ -11,6 +11,7 @@
     -moz-box-shadow: 0 1px 1px 0px #25262a;
     box-shadow: 0 1px 1px 0px #25262a;
 }
+
 .chatroom-title-div {
     display: flex;
     align-items: center;
@@ -36,6 +37,7 @@
 .message-item-li, .message-item-author-date-div {
     display: flex;
 }
+
 .message-item-author-date-div {
     align-items: flex-end;
 }
@@ -47,7 +49,7 @@
     padding-bottom: 2px;
 }
 
-.message-item-icon-div {
+.message-item-icon {
     margin-left: 17px;
     margin-right: 17px;
     height: 40px;
@@ -55,10 +57,6 @@
     border-radius: 50%;
     background-color: white;
 }
-
-/* .message-item-content-div {
-    margin
-} */
 
 .message-item-time-div {
     margin-left: 8px;

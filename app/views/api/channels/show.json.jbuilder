@@ -1,5 +1,5 @@
 json.members do
-    @channel.members.each do |member|
+    @members.each do |member|
         next if member.id === current_user.id
         json.set! member.id do
             json.extract! member, :id, :username

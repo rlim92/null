@@ -10,12 +10,12 @@ json.messages do
 end
 
 json.members do 
-    @dm.members.each do |member|
+    @members.each do |member|
         next if member.id === current_user.id
         json.set! member.id do
             json.extract! member, :id, :username
             json.isFriend current_user.friends.include?(member.id)
-            json.avatarUrl @user.avatar.attached? ? url_for(@user.avatar) : ""
+            json.avatarUrl member.avatar.attached? ? url_for(member.avatar) : ""
         end
     end
 end
