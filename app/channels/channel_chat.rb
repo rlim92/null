@@ -10,7 +10,7 @@ class ChannelChat < ApplicationCable::Channel
     message = @chat_channel.messages.new(text: data['message'])
     message.author_id = current_user.id
 
-    if message.save!
+    if message.save
       msg = {}
       msg[message.id] = { 
         id: message.id, 

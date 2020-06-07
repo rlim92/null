@@ -3,7 +3,7 @@ class User < ApplicationRecord
     validates :email, :username, :session_token, uniqueness: true
     validates :password, length: { minimum: 6, allow_nil: true }
 
-    has_one_attached :photo
+    has_one_attached :avatar
 
     has_many :memberships,
         class_name: :Membership,

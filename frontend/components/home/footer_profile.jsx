@@ -3,11 +3,15 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 
 const FooterProfile = props => {
+    let avatar = "https://image.flaticon.com/icons/svg/860/860168.svg";
+    if (props.currentUser.avatarUrl) {
+        avatar = props.currentUser.avatarUrl;
+    }
     return (
         <div className="footer-profile-div">
             <div className="footer-profile-left-div">
                 <div className="footer-icon-div">
-                    <img src="https://image.flaticon.com/icons/svg/860/860168.svg" height="28" width="28" />
+                    <img src={avatar} height="28" width="28" />
                 </div>
                 <div className="footer-current-username-div">
                     {props.currentUser.username}

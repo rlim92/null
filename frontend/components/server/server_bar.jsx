@@ -60,6 +60,7 @@ class ServerBar extends React.Component {
     render() {
         if (!this.props.servers) return null;
         const activeMe = this.state.activeServ ? "" : "active-serv";
+        const avatar = this.props.currentUser.avatarUrl ? this.props.currentUser.avatarUrl : 'https://image.flaticon.com/icons/svg/860/860168.svg'
         
         return (
             <>
@@ -68,7 +69,7 @@ class ServerBar extends React.Component {
                     <Link to={{ pathname: '/@me', state: "fromLink" }} className="link me-link">
                         <div className={`server-bar-div-li me-div-li ${activeMe}`}>
                             <li className="me-li server-bar-li">
-                                <img src="https://image.flaticon.com/icons/svg/860/860168.svg" height="44" width="44" />
+                                <img src={avatar} height="44" width="44" />
                             </li>
                         </div>
                     </Link>
@@ -83,8 +84,10 @@ class ServerBar extends React.Component {
 }
 
 const mSTP = state => {
+    const currentUser = state.entities.users[state.session.id];
     return {
-        servers: Object.values(state.entities.servers)
+        servers: Object.values(state.entities.servers),
+        currentUser
     }
 }
 

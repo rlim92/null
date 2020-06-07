@@ -50,6 +50,15 @@ export const signup = (user) => {
     };
 };
 
+export const signupWithAvatar = (user) => {
+    return (dispatch) => {
+        return APIUtil.signupWithAvatar(user).then(
+            (user) => { dispatch(receiveCurrentUser(user)); },
+            (errors) => { dispatch(receiveErrors(errors)); }
+        );
+    };
+};
+
 
 export const fetchCurrentUser = (userId) => {
     return (dispatch) => {

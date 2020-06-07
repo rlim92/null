@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
-import { signup, login } from '../../actions/session_actions';
+import { signup, signupWithAvatar } from '../../actions/session_actions';
 import { clearErrors } from '../../actions/error_actions';
 import { closeModal } from '../../actions/modal_actions';
 
@@ -11,6 +11,8 @@ const mSTP = (state) => {
             username: "",
             email: "",
             password: "",
+            avatarFile: null,
+            avatarUrl: null
         },
         errors: state.errors.session,
         formType: "Sign up",
@@ -20,6 +22,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         action: (user) => dispatch(signup(user)),
+        signupWithAvatar: (user) => dispatch(signupWithAvatar(user)),
         clearErrors: () => dispatch(clearErrors()),
         closeModal: () => dispatch(closeModal())
     }

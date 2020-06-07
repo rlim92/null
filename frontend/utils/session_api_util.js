@@ -1,8 +1,19 @@
+export const signupWithAvatar = (user) => {
+    return $.ajax({
+        method: "POST",
+        url: "/api/users",
+        data: user,
+        contentType: false,
+        processData: false,
+        dataType: "json"
+    });
+};
+
 export const signup = (user) => {
     return $.ajax({
         method: "POST",
         url: "/api/users",
-        data: { user }
+        data: { user },
     });
 };
 

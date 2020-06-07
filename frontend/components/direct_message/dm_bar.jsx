@@ -22,36 +22,39 @@ class DMBar extends React.Component {
         this.needPull = false;
     }
 
-    getIcons(num) {
-        switch (num) {
-            case 1:
+    getIcons(dm) {
+        const { users } = this.props;
+        switch (dm.memberIds[0]) {
+            case 3:
                 return (
                     <img height="28" width="28"
                         src="https://image.flaticon.com/icons/svg/785/785218.svg"/>
                 )
-            case 2:
+            case 4:
                 return (
                     <img height="28" width="28"
                         src="https://image.flaticon.com/icons/svg/606/606797.svg"/>
                 )
-            case 3:
+            case 5:
                 return (
                     <img height="28" width="28"
                         src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
                 )
-            case 4:
-                return (
-                    <img height="28" width="28"
-                        src="https://image.flaticon.com/icons/svg/615/615579.svg" />
-                )
+            case 6:
+                return (<img height="28" width="28"
+                    src="https://image.flaticon.com/icons/svg/615/615579.svg" />)
             default:
-                return "";
+                const avatar = users[dm.memberIds[0]].avatarUrl ? users[dm.memberIds[0]].avatarUrl : "";
+                if (!avatar) return avatar;
+                return (<img height="32" width="32" className="avatar-img"
+                    src={avatar} />)
         }
     }
 
     mapDMs() {
         const { directMessages, users } = this.props;
         let needPull;
+        let img;
 
         const dmLis = directMessages.map((dm, idx) => {
             const memberCount = dm.memberIds.length > 2 ? <div className="dm-member-count">{dm.memberIds.length} Members</div> : "";
@@ -70,7 +73,7 @@ class DMBar extends React.Component {
                 memberNames = `${memberNames.slice(0, 22)}...`;
             }
 
-            const img = this.getIcons(idx);
+            img = this.getIcons(dm);
 
             return (
                 <Link to={`/@me/dms/${dm.id}`} key={`dm-${idx}`} className="link dm-link">
@@ -95,6 +98,7 @@ class DMBar extends React.Component {
     }
 
     render() {
+
         if (this.needPull) return <div className="dm-bar-div"></div>;
 
         return (
@@ -103,16 +107,18 @@ class DMBar extends React.Component {
                     <div className="search-div">Find or start a conversation      </div>
                 </div>
                 <div className="dm-border-div dm-border-border"></div>
-                <Link to="/@me/friends" className="link friends-link">
-                    <li className="dm-names-li">
-                        <div className="dm-user-avatar-div"></div>
-                        <div>
-                            Friends
-                        </div>
-                    </li>
-                </Link>
-                <div className="dm-header-div">Direct Messages</div>
-                {this.mapDMs()}
+                <div className="main-dm-bar-div">
+                    <Link to="/@me/friends" className="link friends-link">
+                        <li className="dm-names-li">
+                            <div className="dm-user-avatar-div"></div>
+                            <div>
+                                Friends
+                            </div>
+                        </li>
+                    </Link>
+                    <div className="dm-header-div">Direct Messages</div>
+                    {this.mapDMs()}
+                </div>
             </div>
         )
     }

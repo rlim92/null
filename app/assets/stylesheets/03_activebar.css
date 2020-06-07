@@ -13,6 +13,29 @@
     height: calc(100vh - 52px);
 }
 
+.main-dm-bar-div {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 240px;
+    height: calc(100vh - 101px);
+}
+
+.main-dm-bar-div::-webkit-scrollbar {
+    /* opacity: 0; */
+    display: none;
+    width: 4px;
+    background-color:#303136;
+    border-radius: 100px;
+}
+
+.main-dm-bar-div::-webkit-scrollbar-thumb {
+    /* opacity: 0; */
+    display: none;
+    background-color: #202325;
+    border-radius: 100px;
+}
+
+
 .dm-header-div, .text-channels-header {
     font-size: 11px;
     margin: 10px;
@@ -98,6 +121,11 @@
 
 .icon-num-4 {
     background-color: #2eb67d;
+}
+
+.avatar-img {
+    border-radius: 50%;
+    background-color: #2f3136;
 }
 
 .dm-member-count {

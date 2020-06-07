@@ -15,6 +15,7 @@ json.members do
         json.set! member.id do
             json.extract! member, :id, :username
             json.isFriend current_user.friends.include?(member.id)
+            json.avatarUrl @user.avatar.attached? ? url_for(@user.avatar) : ""
         end
     end
 end

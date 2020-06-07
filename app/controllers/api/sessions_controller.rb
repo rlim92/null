@@ -2,6 +2,7 @@ class Api::SessionsController < ApplicationController
   before_action :ensure_logged_in, only: [:show, :destroy]
 
   def create
+
     @user = User.includes(
       :friend_reqs,
       :friend_backs
@@ -9,7 +10,7 @@ class Api::SessionsController < ApplicationController
       direct_messages: :members
     ).includes(
       servers: :channels
-    ).find_by_credentials(
+    ).with_attached_avatar.find_by_credentials(
       params[:user][:email], 
       params[:user][:password]
     )

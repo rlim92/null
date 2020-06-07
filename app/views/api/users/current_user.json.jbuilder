@@ -4,6 +4,7 @@ json.currentUser do
     json.serverIds @user.server_ids 
     json.dmIds @user.direct_message_ids
     json.friendIds @user.friends
+    json.avatarUrl @user.avatar.attached? ? url_for(@user.avatar) : ""
 end
 
 json.servers do
