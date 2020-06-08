@@ -7,6 +7,10 @@ import { fetchUserDms } from '../../actions/dm_actions';
 class DMBar extends React.Component {
     constructor(props) {
         super(props);
+        this.fire = window.fireIcon;
+        this.water = window.waterIcon;
+        this.lightning = window.lightningIcon;
+        this.wind = window.windIcon;
 
         if (props.location && props.location.state) {
             this.needPull = true;
@@ -24,31 +28,17 @@ class DMBar extends React.Component {
 
     getIcons(dm) {
         const { users } = this.props;
-        switch (dm.memberIds[0]) {
-            case 3:
-                return (
-                    <img height="28" width="28"
-                        src="https://image.flaticon.com/icons/svg/785/785218.svg"/>
-                )
-            case 4:
-                return (
-                    <img height="28" width="28"
-                        src="https://image.flaticon.com/icons/svg/606/606797.svg"/>
-                )
-            case 5:
-                return (
-                    <img height="28" width="28"
-                        src="https://image.flaticon.com/icons/svg/1330/1330254.svg" />
-                )
-            case 6:
-                return (<img height="28" width="28"
-                    src="https://image.flaticon.com/icons/svg/615/615579.svg" />)
-            default:
-                const avatar = users[dm.memberIds[0]].avatarUrl ? users[dm.memberIds[0]].avatarUrl : "";
-                if (!avatar) return avatar;
-                return (<img height="32" width="32" className="avatar-img"
-                    src={avatar} />)
-        }
+        const userId = dm.memberIds[0];
+        const avatar = users[userId].avatarUrl ? users[userId].avatarUrl : "";
+        if (!avatar) return avatar;
+        return (
+            <img 
+                height="32" 
+                width="32" 
+                className="avatar-img"
+                src={avatar} 
+            />
+        )
     }
 
     mapDMs() {
@@ -77,7 +67,7 @@ class DMBar extends React.Component {
             return (
                 <Link to={`/@me/dms/${dm.id}`} key={`dm-${idx}`} className="link dm-link">
                     <li className="dm-names-li">
-                        <div className={`dm-user-avatar-div icon-num-${idx}`}>{img}</div>
+                        <div className={`dm-user-avatar-div`}>{img}</div>
                         <div className="dm-member-div">
                             <div>
                                 {memberNames}

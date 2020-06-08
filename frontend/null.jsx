@@ -6,9 +6,10 @@ import Root from './components/root';
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
-    let store;
+    let preloadedState = {};
+
     if (window.currentUser) {
-        const preloadedState = {
+        preloadedState = {
             entities: {
                 users: { [window.currentUser.id]: window.currentUser }
             },
@@ -23,13 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 loading: true
             }
         };
-        store = configureStore(preloadedState);
         delete window.currentUser;
         const secretInfo = document.querySelector('#boot');
         secretInfo.parentElement.removeChild(secretInfo);
-    } else {
-        store = configureStore();
     }
-
+    
+    const store = configureStore(preloadedState);
     ReactDOM.render(<Root store={store} />, root);
 });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Riscord</title>
+    <title>null</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
@@ -9,11 +9,17 @@
     <%= javascript_include_tag 'application' %>
 
     <script type="text/javascript">
+      window.controller = "<%= image_url('controller.svg')%>"
+      
       window.redFlame = "<%= image_url('redFire.svg')%>"
       window.blueTidal = "<%= image_url('blueWater.svg')%>"
       window.yellowShock = "<%= image_url('yellowLightning.svg')%>"
       window.greenCloud = "<%= image_url('greenTornado.svg')%>"
-      window.controller = "<%= image_url('controller.svg')%>"
+
+      window.fireIcon = "<%= image_url('fireIcon.png')%>"
+      window.waterIcon = "<%= image_url('waterIcon.png')%>"
+      window.lightningIcon = "<%= image_url('lightningIcon.png')%>"
+      window.windIcon = "<%= image_url('windIcon.png')%>"
     </script>
   </head>
 
