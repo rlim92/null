@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     context: __dirname,
-    entry: './frontend/riscord.jsx',
+    entry: './frontend/null.jsx',
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'
