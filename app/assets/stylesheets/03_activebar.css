@@ -151,12 +151,51 @@
 }
 
 .channel-bar-server-header {
+    /* position: relative; */
     height: 48px;
     width: 240px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.channel-bar-server-header:hover {
+    background-color: #35373c;
+}
+
+.dropdown-div {
+    position: fixed;
+    top: 56px;
+    padding: 8px;
+    left: 82px;
+    z-index: 2;
+    outline: none;
+    background-color: #18191c;
+    color: #B9BBBE;
+    border-radius: 4px;
+}
+
+.active {
+    background-color: #35373c;
+}
+
+.dropdown-li {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 196px;
+    padding-left: 8px;
+    padding-right: 0px;
+    cursor: pointer;
+    color: #B9BBBE;
+    font-size: 12px;
+}
+
+.dropdown-li:hover {
+    background-color: gray;
+    border-radius: 2px;
 }
 
 .channel-bar-server-name {

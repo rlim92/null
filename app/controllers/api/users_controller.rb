@@ -2,14 +2,6 @@ class Api::UsersController < ApplicationController
     before_action :ensure_logged_in, only: [:index]
 
     def index
-        if params[:dm_ids]
-            @dms = DirectMessage.includes(:members).find(params[:dm_ids])
-            if @dms
-                render :index
-            else
-                render json: @dms.errors.full_messages, status: 420
-            end
-        end
     end
 
     def create

@@ -11,3 +11,14 @@ export const fetchChannelInfo = channelId => {
         url: `/api/channels/${channelId}`
     })
 }
+
+export function handleBlur(ref, callback) {
+    return event => {
+        const relatedTarget = event.relatedTarget;
+        const node = ref.current;
+        debugger;
+        if (node !== relatedTarget && !node.contains(relatedTarget)) {
+            this.handleClick()
+        }
+    };
+}
