@@ -45,12 +45,16 @@ class ServerBar extends React.Component {
                     <Link to={`/channels/${server.id}/${firstChId}`} 
                         className="server-link"
                     >
-                        <div onClick={() => this.activeServ(server.id)} 
-                            className={`server-bar-div-li server-icon-${idx} ${activeServ}`}>
+                        <div 
+                            onClick={() => this.activeServ(server.id)} 
+                            className={`server-bar-div-li server-icon-${idx} ${activeServ}`}
+                        >
                             <li className="server-bar-li">
                                 {server.name.slice(0,1)}
                             </li>
                         </div>
+                        <div className="triangle-left-div"></div>
+                        <div className="server-name-invis" >{server.name}</div>
                     </Link>
                 </div>
             )
@@ -60,7 +64,7 @@ class ServerBar extends React.Component {
     render() {
         if (!this.props.servers) return null;
         const activeMe = this.state.activeServ ? "" : "active-serv";
-        const avatar = this.props.currentUser.avatarUrl ? this.props.currentUser.avatarUrl : 'https://image.flaticon.com/icons/svg/860/860168.svg'
+        const avatar = this.props.currentUser.avatarUrl ? this.props.currentUser.avatarUrl : 'https://image.flaticon.com/icons/svg/860/860168.svg';
         
         return (
             <>
@@ -90,6 +94,5 @@ const mSTP = state => {
         currentUser
     }
 }
-
 
 export default connect(mSTP, null)(ServerBar);

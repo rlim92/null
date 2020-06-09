@@ -34,11 +34,43 @@
     text-decoration: none;
 }
 
+.triangle-left-div {
+    position: absolute;
+    display:none;
+    width: 0; 
+    height: 0; 
+    left: 79px;
+    top: 22px;   
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent; 
+
+    border-right: 5px solid black; 
+}
+
+.server-name-invis {
+    position: absolute;
+    display: none;
+    background-color: black;
+    border-radius: 4px;
+    left: 84px;
+    top: 12px;
+    padding-left: 11px;
+    padding-right: 11px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 13px; 
+    font-weight: 700;
+}
+
 
 /* server hover effect */
 .server-bar-div-li:hover {
     border-radius: 16px;
     transition-duration: 0.3s;
+}
+
+.server-bar-div-li:hover ~ .server-name-invis, .server-bar-div-li:hover ~ .triangle-left-div {
+    display: initial;
 }
 
 .server-icon-0:hover {
@@ -119,6 +151,7 @@
 }
 
 .server-item-div {
+    position: relative;
     display: flex;
     align-items: center;
     height: 56px;
