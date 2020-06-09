@@ -54,14 +54,25 @@
     border-radius: 4px;
     left: 84px;
     top: 12px;
-    padding-left: 11px;
-    padding-right: 11px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 7px;
     padding-bottom: 7px;
     font-size: 13px; 
     font-weight: 700;
 }
 
+.home-name-tri-div {
+    left: 75px;
+    top: 31px;
+
+}
+
+.home-name-div {
+    left: 80px;
+    top: 21px;
+    color: white;
+}
 
 /* server hover effect */
 .server-bar-div-li:hover {

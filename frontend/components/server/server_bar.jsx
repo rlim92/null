@@ -76,6 +76,8 @@ class ServerBar extends React.Component {
                                 <img src={avatar} height="44" width="44" />
                             </li>
                         </div>
+                        <div className="triangle-left-div home-name-tri-div"></div>
+                        <div className="server-name-invis home-name-div" >Home</div>
                     </Link>
                 </div>
                 <div className="server-bar-border-div"></div>
