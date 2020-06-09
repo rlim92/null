@@ -26,12 +26,13 @@
 }
 
 .server-bar-div {
-    margin-left: -8px;
+    margin-left: 24px;
 }
 
 .server-bar-div-li, .server-link {
     color: white;
     text-decoration: none;
+    // margin-left: 8px;
 }
 
 .triangle-left-div {
@@ -39,7 +40,7 @@
     display:none;
     width: 0; 
     height: 0; 
-    left: 79px;
+    left: 64px;
     top: 22px;   
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent; 
@@ -52,7 +53,7 @@
     display: none;
     background-color: black;
     border-radius: 4px;
-    left: 84px;
+    left: 69px;
     top: 12px;
     padding-left: 10px;
     padding-right: 10px;
@@ -115,29 +116,45 @@
     color: black;
 }
 
-.me-div:hover .invis-me-div, .server-item-div:hover .invis-serv-div {
+.server-bar-div-li:hover ~ .invis-me-div, .server-bar-div-li:hover ~ .invis-serv-div {
     background-color: white;
     height: 20px;
     border-radius: 8px;
     animation: createLine .3s;
 }
 
-.server-link:active, .me-link:active {
-    transform: translateY(1px);
+.server-link:active .server-bar-div-li, .me-link:active .server-bar-div-li {
+    transform: translateY(2px);
 }
 
 /* active server animation */
 .invis-serv-div {
+    position: absolute;
     width: 8px;
-    margin-right: 8px;
+    top: 17px;
+    left: -16px;
+    // margin-right: 8px;
 }
 
 .invis-me-div {
+    position: absolute;
     width: 8px;
+    top: 25px;
+    left: -4px;
+}
+
+#go-active-serv-serv {
+    background-color: white;
+    top: 8px;
+    left: -16px;
+    height: 40px;
+    border-radius: 8px;
+    animation: createLine1 .3s;
 }
 
 #go-active-serv {
     background-color: white;
+    top: 16px;
     height: 40px;
     border-radius: 8px;
     animation: createLine1 .3s;
@@ -178,7 +195,7 @@
     height: 64px;
     margin-top: 4px;
     display: flex;
-    margin-left: -8px;
+    margin-left: 8px;
     /* justify-content: center; */
     align-items: center;
     width: 72px;

@@ -41,7 +41,6 @@ class ServerBar extends React.Component {
             const activeServ = this.state.activeServ === server.id ? "active-serv" : ""
             return (
                 <div className="server-item-div" key={`server-${idx}`} >
-                    <div className={`invis-serv-div`} id={`go-${activeServ}`}></div>
                     <Link to={`/channels/${server.id}/${firstChId}`} 
                         className="server-link"
                     >
@@ -53,6 +52,7 @@ class ServerBar extends React.Component {
                                 {server.name.slice(0,1)}
                             </li>
                         </div>
+                        <div className={`invis-serv-div`} id={`go-${activeServ}-serv`}></div>
                         <div className="triangle-left-div"></div>
                         <div className="server-name-invis" >{server.name}</div>
                     </Link>
@@ -69,13 +69,13 @@ class ServerBar extends React.Component {
         return (
             <>
                 <div className="me-div">
-                    <div className={`invis-me-div`} id={`go-${activeMe}`}></div>
                     <Link to={{ pathname: '/@me', state: "fromLink" }} className="link me-link">
                         <div className={`server-bar-div-li me-div-li ${activeMe}`}>
                             <li className="me-li server-bar-li">
                                 <img src={avatar} height="44" width="44" />
                             </li>
                         </div>
+                        <div className={`invis-me-div`} id={`go-${activeMe}`}></div>
                         <div className="triangle-left-div home-name-tri-div"></div>
                         <div className="server-name-invis home-name-div" >Home</div>
                     </Link>
