@@ -4,9 +4,9 @@ import { useElement } from '../../context/ElementContext'
 import TerminalWindow from '../ui/TerminalWindow'
 
 const LINKS = [
-  { label: 'GitHub', href: 'https://github.com/rich', cmd: 'open github.com/rich' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/rich', cmd: 'open linkedin.com/in/rich' },
-  { label: 'Email', href: 'mailto:rich@example.com', cmd: 'mail rich@example.com' },
+  { label: 'GitHub', href: 'https://github.com/rlim92', cmd: 'open github.com/rlim92' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/richard-lim-7100a4a7/', cmd: 'open linkedin.com/in/richard-lim-7100a4a7' },
+  { label: 'Email', href: 'mailto:richardlim92@gmail.com', cmd: 'mail richardlim92@gmail.com' },
 ]
 
 export default function Contact() {
@@ -14,7 +14,7 @@ export default function Contact() {
   const [copied, setCopied] = useState(false)
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('rich@example.com')
+    navigator.clipboard.writeText('richardlim92@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
