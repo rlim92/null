@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v20/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v20/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2') format('woff2');
+}
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  --color-element-primary: var(--element-primary, #a0a0a0);
+  --color-element-secondary: var(--element-secondary, #505050);
+  --color-element-accent: var(--element-accent, #2a2a2a);
+  --color-element-glow: var(--element-glow, rgba(160, 160, 160, 0.3));
+  --color-element-bg: var(--element-bg, #050505);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--element-primary, #a0a0a0) transparent;
+}
+
+::selection {
+  background: var(--element-primary, #a0a0a0);
+  color: #0a0a0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #b0b0b0;
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===== Scanline overlay ===== */
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.03) 1px,
+    rgba(0, 0, 0, 0.03) 2px
+  );
+}
+
+/* ===== CRT screen flicker ===== */
+@keyframes flicker {
+  0% { opacity: 0.98; }
+  5% { opacity: 0.96; }
+  10% { opacity: 0.98; }
+  15% { opacity: 0.97; }
+  20% { opacity: 0.99; }
+  50% { opacity: 0.98; }
+  80% { opacity: 0.96; }
+  90% { opacity: 0.99; }
+  100% { opacity: 0.98; }
+}
+
+.crt-flicker {
+  animation: flicker 4s infinite;
+}
+
+/* ===== Terminal window chrome ===== */
+.terminal-window {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.terminal-titlebar {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(30, 30, 30, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  user-select: none;
+}
+
+.terminal-body {
+  padding: 20px;
+}
+
+/* ===== Phosphor glow text ===== */
+.glow-text {
+  text-shadow:
+    0 0 7px var(--element-glow, rgba(138, 43, 226, 0.4)),
+    0 0 20px var(--element-glow, rgba(138, 43, 226, 0.2));
+}
+
+/* ===== Blinking cursor ===== */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ===== Glow pulse for element selector ===== */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--element-glow, rgba(138, 43, 226, 0.4)); }
+  50% { box-shadow: 0 0 20px var(--element-glow, rgba(138, 43, 226, 0.4)); }
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ===== Link/interactive glow ===== */
+.terminal-link {
+  transition: all 0.2s ease;
+}
+
+.terminal-link:hover {
+  text-shadow:
+    0 0 8px var(--element-glow, rgba(138, 43, 226, 0.4)),
+    0 0 25px var(--element-glow, rgba(138, 43, 226, 0.2));
+}
+
+/* ===== Typing cursor animation for hero ===== */
+@keyframes type-cursor {
+  0%, 100% { border-right-color: var(--element-primary, #a0a0a0); }
+  50% { border-right-color: transparent; }
+}
+
+.type-cursor {
+  border-right: 2px solid var(--element-primary, #a0a0a0);
+  animation: type-cursor 1s step-end infinite;
+}
