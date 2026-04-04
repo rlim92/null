@@ -11,13 +11,6 @@ export interface ElementColors {
 export interface ElementDefinition {
   id: ElementType
   name: string
-  nation: string
-  animal: string
-  weapon: string
-  sacredItem: string
-  disaster: string
-  disasterAttack: string
-  foodPrep: string
   colors: ElementColors
   description: string
   tagline: string

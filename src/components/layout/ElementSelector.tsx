@@ -100,7 +100,7 @@ export default function ElementSelector() {
               <span className="text-neutral-600 text-[10px]">{open ? '▼' : '▲'}</span>
             </button>
             <span className="text-neutral-700">|</span>
-            <span className="text-neutral-600 hidden sm:inline">{ELEMENTS[element].nation}</span>
+            <span className="text-neutral-600 hidden sm:inline">{ELEMENTS[element].tagline}</span>
           </div>
 
           <div className="flex items-center gap-3 text-neutral-600">

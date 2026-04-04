@@ -4,10 +4,9 @@ import { executeCommand } from '../data/terminal'
 
 const KNOWN_COMMANDS = [
   'help', 'about', 'projects', 'skills', 'contact', 'theme',
-  'lore', 'neofetch', 'fortune', 'clear', 'sudo', 'rm',
+  'neofetch', 'fortune', 'clear', 'sudo', 'rm',
   'hack', 'whoami', 'ls', 'cat', 'pwd', 'cd', 'exit',
-  'hello', 'hi', 'rich', 'emilia', 'quad', 'rock', 'dark',
-  'matrix', 'ping', 'date',
+  'hello', 'hi', 'rich', 'matrix', 'ping', 'date',
 ]
 
 const WELCOME_LINES: TerminalLine[] = [

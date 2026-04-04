@@ -15,13 +15,15 @@ const FORTUNES = [
   '"Code is like humor. When you have to explain it, it\'s bad." — Cory House',
   '"Simplicity is the soul of efficiency." — Austin Freeman',
   '"Make it work, make it right, make it fast." — Kent Beck',
-  '"The void does not judge your code. It consumes it." — Ancient Proverb',
-  '"In the land of the fire nation, every bug is fuel for the forge." — Unknown',
-  '"Water teaches us: find the path of least resistance, then flow." — Hydro Sage',
-  '"Lightning strikes once. Make sure your code handles the second time." — Electro Engineer',
+  '"Programs must be written for people to read, and only incidentally for machines to execute." — Abelson & Sussman',
+  '"The most disastrous thing that you can ever learn is your first programming language." — Alan Kay',
+  '"Talk is cheap. Show me the code." — Linus Torvalds',
+  '"Debugging is twice as hard as writing the code in the first place." — Brian Kernighan',
 ]
 
 function getNeofetch(element: ElementType): string[] {
+  const el = ELEMENTS[element]
+
   const asciiArt: Record<ElementType, string[]> = {
     fire: [
       '       (  .      )',
@@ -29,17 +31,17 @@ function getNeofetch(element: ElementType): string[] {
       '            .  )  .',
       '     (.   )  (   )',
       '   .-\'\'\'\'\'\'\'\'\'\'-.  ',
-      '  /  KOMODO     \\ ',
-      ' |   LIZARD      |',
+      '  /             \\ ',
+      ' |    VOLCANO    |',
       '  \\             / ',
       '   \'-..........\'  ',
     ],
     water: [
       '        ___       ',
       '    .-\'     \'-.   ',
-      '   /  GREAT    \\  ',
-      '  |   BLUE      | ',
-      '  |    SHARK    |  ',
+      '   /           \\  ',
+      '  |   TSUNAMI   | ',
+      '  |             |  ',
       '   \\           /  ',
       '    \'-.     .-\'   ',
       '   ~~~~\\~/~~~~    ',
@@ -48,8 +50,8 @@ function getNeofetch(element: ElementType): string[] {
     lightning: [
       '      /\\          ',
       '     /  \\    /\\   ',
-      '    / BENGAL \\    ',
-      '   /  TIGER   \\  ',
+      '    /        \\    ',
+      '   / SUPERCELL\\  ',
       '  /     ||     \\ ',
       ' /______||______\\',
       '    \\  ||||  /   ',
@@ -58,30 +60,29 @@ function getNeofetch(element: ElementType): string[] {
     ],
     wind: [
       '     ___/\\_/\\     ',
-      '    / MARTIAL \\   ',
-      '   /   EAGLE   \\  ',
-      '  |  ^      ^   | ',
-      '  |    (  )     |  ',
-      '   \\   \\--/   /  ',
-      '    \\  ////  /   ',
+      '    /          \\   ',
+      '   /  TORNADO   \\  ',
+      '  |              | ',
+      '  |   ~~~~~~~~   |  ',
+      '   \\  ~~~~~~~~ /  ',
+      '    \\  ~~~~~~ /   ',
       '     \\///////    ',
       '      ~~~~~~     ',
     ],
     void: [
       '      .::::.      ',
       '    .::::::::.    ',
-      '   ::: PRIMAL ::: ',
-      '  :::: DRAGON ::::',
+      '   :::        ::: ',
+      '  ::::  NULL  ::::',
       '  :::  /\\/\\/\\  :::',
       '  ::: < @  @ > :::',
-      '   :::  \\~~/ :::  ',
+      '  :::  \\~~/ :::   ',
       '    \'::::::::::\'  ',
       '      \'::::\'      ',
     ],
   }
 
   const art = asciiArt[element]
-  const el = ELEMENTS[element]
 
   return [
     '',
@@ -90,12 +91,12 @@ function getNeofetch(element: ElementType): string[] {
         `OS: null v1.0.0`,
         `Shell: elemental-bash`,
         `Theme: ${el.name}`,
-        `Nation: ${el.nation}`,
-        `Spirit: ${el.animal}`,
-        `Weapon: ${el.weapon}`,
-        `Disaster: ${el.disaster}`,
-        `Uptime: since the dawn of creation`,
-        `Memory: infinite (void-backed)`,
+        `Projects: ${PROJECTS.length}`,
+        `Stack: React + TypeScript`,
+        `Build: Vite`,
+        `CSS: Tailwind v4`,
+        `Uptime: always shipping`,
+        `Memory: caffeinated`,
       ]
       return line + (info[i] ? `   ${info[i]}` : '')
     }),
@@ -123,7 +124,6 @@ export function executeCommand(
           '  skills        View skills',
           '  contact       Get in touch',
           '  theme <el>    Switch element (fire|water|lightning|wind|void)',
-          '  lore [el]     Explore the elemental world',
           '  neofetch      System info',
           '  fortune       Random wisdom',
           '  clear         Clear terminal',
@@ -143,8 +143,7 @@ export function executeCommand(
           '  I like building stuff, breaking stuff, and occasionally',
           '  shipping stuff that works.',
           '',
-          '  Currently using: TypeScript, React, Node.js',
-          '  Side hobby: worldbuilding a fantasy universe',
+          '  Currently using: TypeScript, React, Python, Node.js',
           '',
         ],
       }
@@ -153,10 +152,10 @@ export function executeCommand(
       return {
         lines: [
           '',
-          '  Forces of Nature:',
+          '  Projects:',
           '',
           ...PROJECTS.map(
-            (p) => `  🌍 ${p.title.padEnd(12)} ${p.subtitle}`
+            (p) => `  ${p.title.padEnd(12)} ${p.subtitle}`
           ),
           '',
           '  Click the markers on the map to explore each project.',
@@ -168,11 +167,12 @@ export function executeCommand(
       return {
         lines: [
           '',
-          '  Skills across the four forces:',
+          '  Skills by project:',
           '',
           ...PROJECTS.flatMap((p) => [
-            `  ${ELEMENTS[p.element].name.padEnd(10)} ${p.tech.join(', ')}`,
+            `  ${p.title.padEnd(12)} ${p.tech.join(', ')}`,
           ]),
+          '',
         ],
       }
 
@@ -195,7 +195,7 @@ export function executeCommand(
         return {
           lines: [
             '',
-            `  Current theme: ${ELEMENTS[currentElement].name} (${ELEMENTS[currentElement].nation})`,
+            `  Current theme: ${ELEMENTS[currentElement].name}`,
             '',
             `  Usage: theme <element>`,
             `  Options: ${ELEMENT_ORDER.join(', ')}`,
@@ -207,47 +207,10 @@ export function executeCommand(
         lines: [
           '',
           `  Switching to ${ELEMENTS[target].name}...`,
-          `  Welcome to the ${ELEMENTS[target].nation}.`,
-          `  Spirit Animal: ${ELEMENTS[target].animal}`,
+          `  "${ELEMENTS[target].tagline}"`,
           '',
         ],
         action: { type: 'setElement', value: target },
-      }
-    }
-
-    case 'lore': {
-      const target = args[0] as ElementType | undefined
-      if (target && ELEMENT_ORDER.includes(target)) {
-        const el = ELEMENTS[target]
-        return {
-          lines: [
-            '',
-            `  === ${el.name.toUpperCase()} — ${el.nation} ===`,
-            '',
-            `  Spirit Animal:    ${el.animal}`,
-            `  Sacred Weapon:    ${el.weapon}`,
-            `  Sacred Item:      ${el.sacredItem}`,
-            `  Natural Disaster: ${el.disaster}`,
-            `  Ultimate Attack:  ${el.disasterAttack}`,
-            `  Food Prep:        ${el.foodPrep}`,
-            '',
-            `  ${el.description}`,
-            '',
-          ],
-        }
-      }
-      return {
-        lines: [
-          '',
-          '  The Six Elemental Nations:',
-          '',
-          ...ELEMENT_ORDER.map(
-            (el) => `  [${el.padEnd(9)}] ${ELEMENTS[el].nation.padEnd(22)} — ${ELEMENTS[el].animal}`
-          ),
-          '',
-          '  Type "lore <element>" for details. e.g. "lore void"',
-          '',
-        ],
       }
     }
 
@@ -275,11 +238,7 @@ export function executeCommand(
 
     case 'rm':
       return {
-        lines: [
-          '',
-          '  Permission denied. You cannot destroy what the void has already claimed.',
-          '',
-        ],
+        lines: ['', '  Permission denied. Nice try though.', ''],
         color: '#a0a0a0',
       }
 
@@ -288,8 +247,8 @@ export function executeCommand(
         lines: [
           '',
           '  Initiating hack sequence...',
-          '  Bypassing elemental firewall...',
-          '  Accessing sacred weapon database...',
+          '  Bypassing firewall...',
+          '  Accessing database...',
           '  ...',
           '  Just kidding. Have a cookie instead. 🍪',
           '',
@@ -298,19 +257,14 @@ export function executeCommand(
 
     case 'whoami':
       return {
-        lines: [
-          '',
-          '  visitor — but perhaps you are destined for more.',
-          '  Try "lore" to discover your nation.',
-          '',
-        ],
+        lines: ['', '  visitor', ''],
       }
 
     case 'ls':
       return {
         lines: [
           '',
-          '  fire/  water/  lightning/  wind/  void/  README.md',
+          '  volcano/  tsunami/  supercell/  tornado/  README.md',
           '',
         ],
       }
@@ -322,17 +276,16 @@ export function executeCommand(
             '',
             '  # null',
             '',
-            '  A portfolio forged in the elements.',
+            '  A portfolio built with React, TypeScript, and Tailwind.',
             '  By Rich, Software Engineer.',
             '',
-            '  In the beginning, six elemental bodies governed the planet',
-            '  and gave life to humans. Many were normal, but others',
-            '  were blessed with elemental powers...',
+            '  Each project is themed around a natural force.',
+            '  Switch elements with "theme <element>" to explore.',
             '',
           ],
         }
       }
-      return { lines: ['', `  cat: ${args[0] || '???'}: No such file in this realm.`, ''] }
+      return { lines: ['', `  cat: ${args[0] || '???'}: No such file.`, ''] }
 
     case 'pwd':
       return { lines: ['', '  /home/rich/null', ''] }
@@ -341,70 +294,20 @@ export function executeCommand(
       return { lines: ['', '  There is no escape. You are exactly where you need to be.', ''] }
 
     case 'exit':
-      return { lines: ['', '  The void has no exit. Only deeper levels.', ''] }
+      return { lines: ['', '  There is no exit. Only more code to write.', ''] }
 
     case 'hello':
     case 'hi':
-      return { lines: ['', '  Hello, traveler. Welcome to the realm of null.', ''] }
+      return { lines: ['', '  Hello! Welcome to my portfolio.', ''] }
 
     case 'rich':
       return {
         lines: [
           '',
-          '  You have summoned the Chosen One.',
+          '  You have summoned the developer.',
           '  He nods approvingly.',
           '',
         ],
-      }
-
-    case 'emilia':
-      return {
-        lines: [
-          '',
-          '  Silver hair in the moonlight...',
-          '  A name carried through the four nations.',
-          '  Some say she still travels the trade routes.',
-          '',
-        ],
-        color: '#c0c0c0',
-      }
-
-    case 'quad':
-      return {
-        lines: [
-          '',
-          '  A white beard. Four limbs forged from elder animals.',
-          '  The only human to master all four elements.',
-          '  The Emperor.',
-          '  ...and the ultimate enemy.',
-          '',
-        ],
-        color: '#ff4500',
-      }
-
-    case 'rock':
-      return {
-        lines: [
-          '',
-          '  The Immovable Object.',
-          '  A nomadic Earth merchant who walked the Avalanche Route.',
-          '  His skin was as tough as steel, and his heart even tougher.',
-          '  "Follow the beasts within."',
-          '',
-        ],
-        color: '#daa520',
-      }
-
-    case 'dark':
-      return {
-        lines: [
-          '',
-          '  The Unstoppable Force.',
-          '  A mysterious void hunter who appeared as quietly as he vanished.',
-          '  He sealed a weapon within the Chosen, then disappeared into the black.',
-          '',
-        ],
-        color: '#707070',
       }
 
     case 'matrix':

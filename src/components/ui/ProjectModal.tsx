@@ -88,7 +88,7 @@ export default function ProjectModal({ project, onClose }: Props) {
               className="text-xs font-mono uppercase tracking-[0.2em] mb-2"
               style={{ color: el.colors.primary }}
             >
-              {el.name} &mdash; {el.nation}
+              {el.name} &mdash; {el.tagline}
             </p>
             <h2
               className="text-4xl sm:text-5xl font-bold font-mono tracking-tight"
