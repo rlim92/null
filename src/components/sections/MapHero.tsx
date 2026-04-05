@@ -15,6 +15,7 @@ const PROJECT_ICONS: Record<string, string> = {
   tsunami: 'icons/tsunami.svg',
   supercell: 'icons/supercell.svg',
   tornado: 'icons/tornado.svg',
+  tectonic: 'icons/void.png',
 }
 
 export default function MapHero({ onSelectProject }: Props) {

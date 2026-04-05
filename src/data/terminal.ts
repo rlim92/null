@@ -264,7 +264,7 @@ export function executeCommand(
       return {
         lines: [
           '',
-          '  volcano/  tsunami/  supercell/  tornado/  README.md',
+          '  volcano/  tsunami/  supercell/  tornado/  tectonic/  README.md',
           '',
         ],
       }

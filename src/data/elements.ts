@@ -50,7 +50,7 @@ export const ELEMENTS: Record<ElementType, ElementDefinition> = {
       glow: 'rgba(46, 204, 113, 0.4)',
       bg: '#000a06',
     },
-    description: 'Interactive wind map visualizer with particle simulation and real-time flow fields.',
+    description: 'Webhook relay and inspector — capture and inspect HTTP requests in real time.',
     tagline: 'Carried by Momentum',
   },
   void: {
@@ -63,7 +63,7 @@ export const ELEMENTS: Record<ElementType, ElementDefinition> = {
       glow: 'rgba(160, 160, 160, 0.3)',
       bg: '#050505',
     },
-    description: 'The space between projects. Where ideas form before they take shape.',
+    description: 'Elemental card battler — build your deck, master five elements, and battle through a procedural world map.',
     tagline: 'Embracing the Void',
   },
 }
