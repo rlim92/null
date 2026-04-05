@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
     tech: ['React', 'TypeScript', 'Visx', 'TanStack Query', 'Hono', 'WebSocket', 'Drizzle', 'PostgreSQL', 'Redis', 'Docker'],
     github: 'https://github.com/rlim92/volcano',
     live: PROJECT_URLS.volcano,
-    hotspot: { x: 14, y: 22 },
+    hotspot: { x: 20.3, y: 22 },
   },
   {
     id: 'tsunami',
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     tech: ['Next.js', 'Vercel AI SDK', 'Python', 'FastAPI', 'LlamaIndex', 'pgvector', 'PostgreSQL', 'Claude API', 'Docker'],
     github: 'https://github.com/rlim92/tsunami',
     live: PROJECT_URLS.tsunami,
-    hotspot: { x: 90, y: 80 },
+    hotspot: { x: 86, y: 73 },
   },
   {
     id: 'supercell',
@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     tech: ['React', 'TypeScript', 'Yjs', 'PartyKit', 'Canvas API', 'Tailwind'],
     github: 'https://github.com/rlim92/supercell',
     live: PROJECT_URLS.supercell,
-    hotspot: { x: 30, y: 73 },
+    hotspot: { x: 35.5, y: 75 },
   },
   {
     id: 'tornado',
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     tech: ['React', 'TypeScript', 'Go', 'chi', 'SSE', 'Upstash Redis', 'Tailwind', 'Vite'],
     github: 'https://github.com/rlim92/tornado',
     live: PROJECT_URLS.tornado,
-    hotspot: { x: 78, y: 19 },
+    hotspot: { x: 73.8, y: 21.8 },
   },
   {
     id: 'tectonic',
@@ -107,6 +107,6 @@ export const PROJECTS: Project[] = [
     tech: ['Phaser 3', 'React', 'TypeScript', 'Vite', 'Sharp', 'Tailwind'],
     github: 'https://github.com/rlim92/tectonic',
     live: PROJECT_URLS.tectonic,
-    hotspot: { x: 42, y: 46 },
+    hotspot: { x: 48.5, y: 59 },
   },
 ]

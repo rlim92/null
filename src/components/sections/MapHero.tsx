@@ -10,14 +10,6 @@ interface Props {
   onSelectProject: (project: Project) => void
 }
 
-const PROJECT_ICONS: Record<string, string> = {
-  volcano: 'icons/volcano.svg',
-  tsunami: 'icons/tsunami.svg',
-  supercell: 'icons/supercell.svg',
-  tornado: 'icons/tornado.svg',
-  tectonic: 'icons/void.png',
-}
-
 export default function MapHero({ onSelectProject }: Props) {
   const { elementData } = useElement()
   const [hoveredId, setHoveredId] = useState<string | null>(null)
@@ -38,7 +30,10 @@ export default function MapHero({ onSelectProject }: Props) {
           null
         </h1>
         <p className="text-neutral-500 text-xs sm:text-sm mt-2 font-mono tracking-wider">
-          <span className="text-neutral-600">$</span> Software Engineer <span className="text-neutral-600">&mdash;</span> Select a force of nature
+          <span className="text-neutral-600">$</span> Software Engineer
+        </p>
+        <p className="text-neutral-600 text-[11px] sm:text-xs mt-3 max-w-md mx-auto leading-relaxed">
+          Each project is a force of nature. Click a marker on the map to explore.
         </p>
       </motion.div>
 
@@ -78,7 +73,6 @@ export default function MapHero({ onSelectProject }: Props) {
           {PROJECTS.map((project) => {
             const el = ELEMENTS[project.element]
             const isHovered = hoveredId === project.id
-            const iconSrc = import.meta.env.BASE_URL + PROJECT_ICONS[project.id]
 
             return (
               <div
@@ -116,32 +110,28 @@ export default function MapHero({ onSelectProject }: Props) {
                   onClick={() => onSelectProject(project)}
                   onMouseEnter={() => setHoveredId(project.id)}
                   onMouseLeave={() => setHoveredId(null)}
-                  className="relative flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full cursor-pointer z-10 overflow-hidden"
+                  className="relative w-7 h-7 sm:w-9 sm:h-9 rounded-full cursor-pointer z-10"
                   style={{
                     background: isHovered
-                      ? `radial-gradient(circle, ${el.colors.primary}50 0%, ${el.colors.primary}20 100%)`
-                      : `radial-gradient(circle, ${el.colors.primary}30 0%, ${el.colors.primary}10 100%)`,
-                    border: `2px solid ${isHovered ? el.colors.primary : el.colors.primary + '80'}`,
+                      ? `radial-gradient(circle, #ffffff 0%, ${el.colors.primary} 60%, ${el.colors.primary}40 100%)`
+                      : `radial-gradient(circle, #ffffffcc 0%, ${el.colors.primary}cc 50%, ${el.colors.primary}40 100%)`,
+                    border: `2px solid ${isHovered ? '#ffffff' : el.colors.primary}`,
                     boxShadow: isHovered
-                      ? `0 0 25px ${el.colors.glow}, 0 0 50px ${el.colors.glow}, inset 0 0 15px ${el.colors.primary}20`
-                      : `0 0 10px ${el.colors.glow}`,
+                      ? `0 0 20px ${el.colors.glow}, 0 0 40px ${el.colors.glow}, 0 0 8px #ffffff80`
+                      : `0 0 12px ${el.colors.glow}, 0 0 4px #ffffff60`,
                   }}
-                  whileHover={{ scale: 1.25 }}
+                  animate={isHovered ? { scale: 1.4 } : {
+                    scale: [1, 1.2, 1],
+                    opacity: [0.8, 1, 0.8],
+                  }}
+                  transition={isHovered ? { duration: 0.2 } : {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
                   whileTap={{ scale: 0.9 }}
                   title={project.title}
-                >
-                  <img
-                    src={iconSrc}
-                    alt={project.title}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                    style={{
-                      filter: isHovered
-                        ? `drop-shadow(0 0 6px ${el.colors.primary})`
-                        : `drop-shadow(0 0 3px ${el.colors.primary}80)`,
-                    }}
-                    draggable={false}
-                  />
-                </motion.button>
+                />
 
                 {/* Tooltip */}
                 <AnimatePresence>
