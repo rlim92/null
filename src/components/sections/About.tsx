@@ -22,14 +22,14 @@ export default function About() {
 
           <div className="space-y-3 text-neutral-400 text-xs sm:text-sm">
             <p>
-              Hey, I'm Rich. Software engineer still figuring things out, one project at a time.
-              I like building stuff, breaking stuff, and occasionally shipping stuff that works.
+              Hey, I'm Rich. Software engineer who likes building things end-to-end —
+              from system design to deployment. I've worked across full-stack web, real-time
+              systems, and AI tooling, and I'm always looking for the next thing to build.
             </p>
             <p>
-              The four projects on the map below are things I've been working on across
-              different domains — each one named after a force of nature because I thought
-              that would be cool. The whole elemental theme is from a fantasy world I've been
-              writing on the side, just for fun.
+              The projects on the map are things I've shipped across different domains —
+              each one named after a force of nature. The elemental theme ties them
+              together as part of a larger world I've been building on the side.
             </p>
             <p>
               Thanks for checking this out.
